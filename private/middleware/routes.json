@@ -1,0 +1,30 @@
+{
+	"api":{
+		"all": [
+			"/api/login"
+		],
+
+		"logged": [
+			
+		],
+
+		"admin": [
+			
+		]
+	},
+
+	"views":{
+		"all": [
+			"/",
+			"home",
+			"forbidden"
+			
+		],
+		"logged": [
+			
+		],
+		"admin": [
+			
+		]
+	}
+}
