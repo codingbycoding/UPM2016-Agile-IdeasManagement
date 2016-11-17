@@ -22,10 +22,13 @@
 			"forbidden"
 		],
 		"logged": [
-			"listideas"
+			"listmyideas",
+			"menu",
+			"addidea"
 		],
 		"admin": [
-			"menu"
+			"menuadmin",
+			"manageideas"
 		]
 	}
 }

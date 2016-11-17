@@ -12,9 +12,9 @@
                     $scope.items.pop();
                     $scope.items.push();
                      if(res.data.permission=="1")
-                        $window.location.href = '/menu';
+                        $window.location.href = '/menuadmin';
                     else
-                        $window.location.href = '/listideas';
+                        $window.location.href = '/menu';
                 })
                 .catch(function (err) {
                     $scope.items.pop();
@@ -28,7 +28,6 @@
                 .then(function (res) {
                     $scope.items.pop();
                     $scope.items.push();
-                    alert("ccccc");
                     $scope.login(user,false);
                 })
                 .catch(function (err) {
@@ -40,10 +39,10 @@
         };
         $scope.redirect = function(){
             if($scope.hasSession.data.permission=="1"){
-                        $window.location.href = '/menu';
+                        $window.location.href = '/menuadmin';
             }
                     else {
-                        $window.location.href = '/listideas';
+                        $window.location.href = '/menu';
                     }
         };
         $scope.hasAdminLevel = function() {

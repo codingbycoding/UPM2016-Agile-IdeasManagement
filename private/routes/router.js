@@ -22,7 +22,16 @@
         server.get('/menu', function (req, res) {
             res.render('index');
         });
-        server.get('/listideas', function (req, res) {
+        server.get('/menuadmin', function (req, res) {
+            res.render('index');
+        });
+        server.get('/addidea', function (req, res) {
+            res.render('index');
+        });
+        server.get('/listmyideas', function (req, res) {
+            res.render('index');
+        });
+        server.get('/manageideas', function (req, res) {
             res.render('index');
         });
 

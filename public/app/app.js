@@ -26,14 +26,29 @@
                 controller: "HomeCtrl",
 				css: "styles/home.css"
             })
-            .when("/menu", {
-				templateUrl: "app/views/menu.html",
-                controller: "MenuCtrl",
+            .when("/menuadmin", {
+				templateUrl: "app/views/menuadmin.html",
+                controller: "MenuAdminCtrl",
 				css: "styles/home.css"
             })
-            .when("/listideas", {
+            .when("/menu", {
+				templateUrl: "app/views/menu.html",
+                controller: "HomeCtrl",
+				css: "styles/home.css"
+            })
+            .when("/listmyideas", {
 				templateUrl: "app/views/listideas.html",
                 controller: "ListideasCtrl",
+				css: "styles/home.css"
+            })
+            .when("/addidea", {
+				templateUrl: "app/views/addidea.html",
+                controller: "AddideaCtrl",
+				css: "styles/home.css"
+            })
+            .when("/manageideas", {
+				templateUrl: "app/views/manageideas.html",
+                controller: "HomeCtrl",
 				css: "styles/home.css"
             })
              
