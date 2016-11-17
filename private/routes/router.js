@@ -28,18 +28,20 @@
 
         // <!------------------------------------------------------------------ USERS ---------------------------------------------------------------------------------------------------->
 
-        server.get('/api/users', function (req, res) {
-
-            database.getUser()
-               .then(function (user) {
-                    res.status(200).send(user);
-                })
-                .catch(function (err) {
-                    res.status(406).send('ERRORUSERINFORMATION');
-                });
-
+       server.get('/api/verifysession', function (req, res){
+             if (req.cookies.session) {
+                cookie.verifySession(req.cookies.session)
+                    .then(function (user) {
+                        res.status(200).json(user);
+                    })
+                    .catch(function (err) {
+                        res.status(406).send('ERRORSESSION');
+                    });
+            } else {
+                res.status(404).send('ERRORSESSION');
+            }
         });
-
+       
         server.post('/api/login', function (req, res) {
             var user = {
                 email: req.body.email.toLowerCase(),
@@ -57,18 +59,7 @@
             
             database.confirmLoginByEmail(user)
                 .then(function (user) {
-                    utils.encode(user.token)
-                        .then(function (encoded) {
-                            user.token=encoded;
-                            res.status(200).json(user);
-                        })
-                        .catch(function (err) {
-                           res.status(406).json({
-                        message_class: 'error',
-                        message: "ERRORLOGIN1"
-                    });
-                        });
-
+                    res.status(200).json(user);
                 })
 
                 .catch(function (err) {
@@ -83,72 +74,6 @@
 
         });
 
-
-        server.delete("/api/deleteuser",function(req,res){
-
-            var email = req.body.email.toLowerCase();
-
-            database.deleteUserByEmail(email)
-                .then(function() {
-
-                    res.status(200);
-
-                })
-                .catch(function (err) {
-
-
-                    // Send the Response with message error
-                    res.status(406).json({
-                        message_class: 'error',
-                        message: "ERRORDELETEUSER"
-                    });
-
-                });
-        });
-
-        server.put("/api/updateuseremail",function(req,res){
-
-            //user to be edited
-            var user = {
-                id: req.body.idusers,
-                name: req.body.name,
-                email: req.body.email.toLowerCase(),
-                permission: req.body.permissionid
-            };
-            var oldemail=req.body.oldemail.toLowerCase();
-            //admin making the edition
-            var admin = {
-                pass: req.body.confirmpass,
-                email: req.body.adminemail
-            }
-
-            database.checkPasswordbyEmail(admin.email, admin.pass)
-                .then(function(){
-                    database.updateUserByID(user.id,user.email, user.name, user.permission)
-                        .then(function() {                            
-                            res.status(200).json({
-                                message: "SUCCESS"
-                            });
-                            
-                        })
-                        .catch(function (err) {
-                           
-                            res.status(406).json({
-                                message_class: 'error',
-                                message: "ERRORUPDATEUSEREMAIL"
-                            });
-
-                        });
-                })
-                .catch(function (err) {
-                    // Send the Response with message error
-                    res.status(406).json({
-                        message_class: 'error',
-                        message: "ERRORUPDATEUSEREMAILPASS"
-                    });
-
-                });
-        });
 
     };
 } ());

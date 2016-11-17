@@ -4,8 +4,8 @@
     var userServices = function($q, $http, $cookies, $window) {
         var deferred = $q.defer();
 
-        // Function to login a user
-        this.login = function(user, remember) {/*
+       // Function to login a user
+        this.login = function(user, remember) {
 
             return $http.post('/api/login', user)
                 .success(function(res) {
@@ -30,23 +30,18 @@
                 .error(function(err) {
                     deferred.reject(err);
                 });
-*/
-        };
 
-        this.logged = function() {/*
+        };
+        this.logged = function() {
             return $http.get('/api/verifysession')
                 .success(function(res) {
                     deferred.resolve(res.data);
                 })
                 .error(function(err) {
                     deferred.reject(err);
-                });*/
+                });
         };
-
-
-
-
-
+        
         // Function to logout a user
         this.logout = function() {
             $cookies.remove('session', {
@@ -56,6 +51,10 @@
             $window.location.href = '/';
 
         };
+
+
+
+
 
 
 

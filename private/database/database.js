@@ -28,94 +28,10 @@
     }
 
     <!------------------------------------------------------------------------------------------------ USERS ------------------------------------------------------------->
-    exports.getUser = function(){
-         return new Promise(function (resolve, reject) {
-         var query = "SELECT * FROM public.users WHERE banned=0";
-         query = mysql.format(query);
-         client.query(query,function (err, result) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(result);
-                    }
-                });
-         });
-    }
-
-    exports.getUserByID = function(iduser){
-         return new Promise(function (resolve, reject) {
-         var query = "SELECT * FROM public.users WHERE banned=0 AND idusers = ?";
-         query = mysql.format(query,iduser);
-         client.query(query,function (err, result) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(result);
-                    }
-                });
-         });
-    }
-
-    exports.getManagers = function(){
-         return new Promise(function (resolve, reject) {
-         var query = "SELECT * FROM public.users WHERE banned=0 AND permission = ?";
-         query = mysql.format(query,1);
-         client.query(query,function (err, result) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(result);
-                    }
-                });
-         });
-    }
-
-    exports.getUserByToken = function(token){
-         return new Promise(function (resolve, reject) {
-         var query = "SELECT * FROM public.users WHERE banned=0 AND token = ?";
-         query = mysql.format(query,token);
-         client.query(query,function (err, result) {
-                    if (err) {
-                        reject(err);
-                    } else if(result!=[] && result.length > 0){
-                        delete result[0]['password'];
-                        //delete result[0]['idusers'];
-                        resolve(result[0]);
-                    }
-                    else{
-                        reject("No users");
-                    }
-                });
-         });
-    }
-
-    exports.checkPasswordbyEmail = function(email, password){
-         return new Promise(function (resolve, reject) {
-         client.query('SELECT password FROM public.users WHERE banned=0 AND ?', {email: email},
-                function (err, result) {
-                    if (err) {
-                        reject(err);
-                    } else if(result.length <= 0) {
-                        reject('Wrong password.');
-                    } else {
-                        bcrypt.compare(password, result[0].password, function (err, res) {
-                            if (err) {
-                                reject(err);
-                            } else if (res) {
-                                resolve();
-
-                            } else{
-                                reject('Wrong password.');
-                            }
-                        });
-                    }
-                });
-         });
-    }
 
     exports.confirmLoginByEmail = function(user){
          return new Promise(function (resolve, reject) {
-         var query = "SELECT * FROM public.users WHERE banned=0 AND email = ?";
+         var query = "SELECT * FROM public.users WHERE email = ?";
          query = mysql.format(query,user.email);
          client.query(query,function (err, result) {
                     if (err) {

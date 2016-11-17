@@ -1,15 +1,16 @@
 {
 	"api":{
 		"all": [
+			"/api/verifysession",
 			"/api/login"
 		],
 
 		"logged": [
-			
+			"/api/verifysession"
 		],
 
 		"admin": [
-			
+			"/api/verifysession"
 		]
 	},
 
