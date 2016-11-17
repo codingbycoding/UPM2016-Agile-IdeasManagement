@@ -18,32 +18,30 @@ USE `public`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `ideas`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `ideas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `idusers` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `permission` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 normal\n1 admin',
-  PRIMARY KEY (`idusers`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `idusers_UNIQUE` (`idusers`)
+CREATE TABLE `ideas` (
+  `idideas` int(11) NOT NULL AUTO_INCREMENT,
+  `idcreator` int(11) DEFAULT NULL,
+  `ideatext` varchar(1000) NOT NULL,
+  PRIMARY KEY (`idideas`),
+  UNIQUE KEY `idideas_UNIQUE` (`idideas`),
+  KEY `creator_idx` (`idcreator`),
+  CONSTRAINT `creator` FOREIGN KEY (`idcreator`) REFERENCES `users` (`idusers`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `ideas`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin@agile.es','Admin','$2a$10$Iua2WqU9CtGnJRyw/OzULuhRplmWkSxGsW..u3OIKB5vq3ByIFcuO','1'),(2,'dev@agile.es','Luís','$2a$10$Iua2WqU9CtGnJRyw/OzULuhRplmWkSxGsW..u3OIKB5vq3ByIFcuO','0');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `ideas` WRITE;
+/*!40000 ALTER TABLE `ideas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ideas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
