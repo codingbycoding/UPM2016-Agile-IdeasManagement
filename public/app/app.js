@@ -26,6 +26,16 @@
                 controller: "HomeCtrl",
 				css: "styles/home.css"
             })
+            .when("/menu", {
+				templateUrl: "app/views/menu.html",
+                controller: "MenuCtrl",
+				css: "styles/home.css"
+            })
+            .when("/listideas", {
+				templateUrl: "app/views/listideas.html",
+                controller: "ListideasCtrl",
+				css: "styles/home.css"
+            })
              
             .otherwise({
                 redirectTo: '/forbidden'

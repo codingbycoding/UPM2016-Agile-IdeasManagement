@@ -86,14 +86,12 @@ var url = req.url.split('/')[1];
 
         }
         else {
-            
             cookie.verifySession(req.cookies.session)
                 .catch(function (err) {
                     if (res.statusCode == null) {
                         res.redirect('/forbidden');
                     }
                 });
-
              // START REGION: Views permissions (all)
 
             for (i = 0; i < routes.views.all.length; i++) {
@@ -128,22 +126,6 @@ var url = req.url.split('/')[1];
                                 }
                             break;
                             case "1":
-                               for (i = 0; i < routes.views.advanced.length; i++) {
-                                    if (url.indexOf(routes.views.advanced[i]) > -1) {
-                                        break;
-                                    }
-                                }
-                                
-                                if (i == routes.views.advanced.length) {
-                                    res.statusCode=306;
-                                        res.redirect('/forbidden');
-
-                                } else {
-                                    next();
-                                }
-
-                            break;
-                            case "2":
                                 for (i = 0; i < routes.views.admin.length; i++) {
                                     if (url.indexOf(routes.views.admin[i]) > -1) {
                                         break;

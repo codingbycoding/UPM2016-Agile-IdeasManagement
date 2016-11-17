@@ -58,8 +58,7 @@
                     $scope.hasSession=res;
 					$scope.permission=res.data.permission;
                     $scope.hasSession.logged=true;
-                    if($scope.getPath()=="/")
-					    $scope.redirect();
+               
                 })
                 .catch( function (err){
                     $scope.hasSession.logged=false;
