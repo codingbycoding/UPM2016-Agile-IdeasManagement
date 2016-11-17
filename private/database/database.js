@@ -29,6 +29,24 @@
 
     <!------------------------------------------------------------------------------------------------ USERS ------------------------------------------------------------->
 
+    exports.getUserByToken = function(token){
+            return new Promise(function (resolve, reject) {
+            var query = "SELECT * FROM public.users WHERE token = ?";
+            query = mysql.format(query,token);
+            client.query(query,function (err, result) {
+                        if (err) {
+                            reject(err);
+                        } else if(result!=[] && result.length > 0){
+                            delete result[0]['password'];
+                            //delete result[0]['idusers'];
+                            resolve(result[0]);
+                        }
+                        else{
+                            reject("No users");
+                        }
+                    });
+            });
+        }
     exports.confirmLoginByEmail = function(user){
          return new Promise(function (resolve, reject) {
          var query = "SELECT * FROM public.users WHERE email = ?";

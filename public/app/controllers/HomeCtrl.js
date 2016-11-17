@@ -23,6 +23,20 @@
                 });
             
         };
+        $scope.register = function(user){
+             userServices.register(user)
+                .then(function (res) {
+                    $scope.items.pop();
+                    $scope.items.push();
+                    $scope.login(user,false);
+                })
+                .catch(function (err) {
+                    $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    
+                });
+            
+        };
         $scope.redirect = function(){
             if($scope.hasSession.data.permission=="1"){
                         $window.location.href = '/menu';
@@ -44,7 +58,7 @@
                     $scope.hasSession=res;
 					$scope.permission=res.data.permission;
                     $scope.hasSession.logged=true;
-                    if(getPath()=="/")
+                    if($scope.getPath()=="/")
 					    $scope.redirect();
                 })
                 .catch( function (err){

@@ -30,6 +30,7 @@ CREATE TABLE `users` (
   `password` varchar(256) NOT NULL,
   `name` varchar(100) NOT NULL,
   `permission` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 normal\n1 admin',
+  `token` varchar(200) NOT NULL,
   PRIMARY KEY (`idusers`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `idusers_UNIQUE` (`idusers`)
@@ -42,7 +43,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin@agile.es','$2a$10$Iua2WqU9CtGnJRyw/OzULuhRplmWkSxGsW..u3OIKB5vq3ByIFcuO','Admin','1'),(2,'dev@agile.es','$2a$10$Iua2WqU9CtGnJRyw/OzULuhRplmWkSxGsW..u3OIKB5vq3ByIFcuO','Luís','0');
+INSERT INTO `users` VALUES (1,'admin@agile.es','$2a$10$Iua2WqU9CtGnJRyw/OzULuhRplmWkSxGsW..u3OIKB5vq3ByIFcuO','Admin','1','5ac70c58102a4f18e0a3d0ad2a0e6a3cc0e6f817'),(2,'dev@agile.es','$2a$10$Iua2WqU9CtGnJRyw/OzULuhRplmWkSxGsW..u3OIKB5vq3ByIFcuO','Luís','0','153676591a12ca64dfd54ff78ffd2cbab2493713');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

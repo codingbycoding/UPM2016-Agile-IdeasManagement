@@ -32,6 +32,21 @@
                 });
 
         };
+        this.register = function(user) {
+
+            return $http.post('/api/register', user)
+                .success(function(res) {
+
+                    //$window.location.href = '/home';
+
+                    deferred.resolve('Success');
+
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+        };
         this.logged = function() {
             return $http.get('/api/verifysession')
                 .success(function(res) {
@@ -41,7 +56,7 @@
                     deferred.reject(err);
                 });
         };
-        
+
         // Function to logout a user
         this.logout = function() {
             $cookies.remove('session', {

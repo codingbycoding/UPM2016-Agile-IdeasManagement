@@ -19,6 +19,12 @@
         server.get('/home', function (req, res) {
             res.render('index');
         });
+        server.get('/menu', function (req, res) {
+            res.render('index');
+        });
+        server.get('/listideas', function (req, res) {
+            res.render('index');
+        });
 
         // Route to send forbidden view
         server.get('/forbidden', function (req, res) {
@@ -58,10 +64,20 @@
 
             
             database.confirmLoginByEmail(user)
-                .then(function (user) {
-                    res.status(200).json(user);
-                })
+                 .then(function (user) {
+                    utils.encode(user.token)
+                        .then(function (encoded) {
+                            user.token=encoded;
+                            res.status(200).json(user);
+                        })
+                        .catch(function (err) {
+                           res.status(406).json({
+                        message_class: 'error',
+                        message: "ERRORLOGIN1"
+                    });
+                        });
 
+                })
                 .catch(function (err) {
 
                     // Send the Response with message error
