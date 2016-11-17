@@ -90,6 +90,52 @@
 
         });
 
+        server.post('/api/register', function (req, res) {
+
+    
+        var email,pass,name,permission;
+        email=req.body.email.toLowerCase();
+        pass=req.body.password;
+        name=req.body.name;
+        permission="0";
+
+            if(!validator.validate(email)){
+                // Check if email is valid.
+                res.status(400).json({
+                    message_class: 'error',
+                    message: 'ERRORCREATEEMAIL'
+                });
+            }
+
+            else{
+            database.insertUser(email, pass, name, permission)
+                .then(function (user_id) {
+                    res.status(200).json({
+                                message: "SUCCESS"
+                            });
+                })
+                .catch(function (err) {
+
+                        // If the e-mail is already in use
+                        if (err.sqlState == '23000') {
+                            // Send the Response with message error
+                            res.status(406).json({
+                                message_class: 'error',
+                                message: "ERRORCREATEUSER"
+                            });
+
+                        } else {
+                            // Sending the error to the log file
+                            res.status(406).json({
+                                message_class: 'error',
+                                message: "ERRORCREATINGUSERDB"
+                            });
+
+                        }
+                    });
+            }
+        });
+
 
     };
 } ());

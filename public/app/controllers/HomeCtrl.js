@@ -28,6 +28,7 @@
                 .then(function (res) {
                     $scope.items.pop();
                     $scope.items.push();
+                    alert("ccccc");
                     $scope.login(user,false);
                 })
                 .catch(function (err) {

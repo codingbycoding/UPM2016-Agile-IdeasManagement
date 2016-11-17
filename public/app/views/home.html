@@ -21,8 +21,10 @@
 						<label for="remember">Remember me</label>
 						<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
 
-						<button class="btn button btn-lg btn-primary btn-block btn-signin" data-toggle="modal" data-target="#myModal">Create Account</button>
-
+						
+	</form><!-- /form -->
+	<button class="btn button btn-lg btn-primary btn-block btn-signin" data-toggle="modal" data-target="#myModal">Create Account</button>
+				</div><!-- /card-container -->
 		
 					<!-- Modal -->
 					<div id="myModal" class="modal fade" role="dialog" >
@@ -33,11 +35,11 @@
 					      <div class="modal-header" >
 					        <h4 class="modal-title" >Register</h4>
 					      </div>
-
+									<form ng-submit="register(user1)" class="form-signin">
 					      <div class="control-group" style="margin-left: 10px; margin-top:5px;">
 				              <label class="control-label" for="Email">Email:</label>
 				              <div class="controls">
-				                <input id="Email" name="Email" class="form-control" type="text" placeholder="agike@gmail.com" class="input-large" required="">
+				                <input id="Email" name="Email" ng-model="user1.email" class="form-control" type="email" placeholder="agile@agile.com" class="input-large" required>
 				              </div>
 				            </div>
 
@@ -45,7 +47,7 @@
 				            <div class="control-group" style="margin-left: 10px;">
 				              <label class="control-label" for="userid">Name:</label>
 				              <div class="controls">
-				                <input id="userid" name="userid" class="form-control" type="text" placeholder="Agile2016" class="input-large" required="">
+				                <input id="userid" name="userid" ng-model="user1.name" class="form-control" type="text" placeholder="Agile2016" class="input-large" required>
 				              </div>
 				            </div>
 				            
@@ -53,22 +55,22 @@
 				            <div class="control-group" style="margin-left: 10px;">
 				              <label class="control-label" for="password">Password:</label>
 				              <div class="controls">
-				                <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">
+				                <input id="password" name="password" ng-model="user1.password"class="form-control" type="password" placeholder="********" class="input-large" required>
 				              </div>
 				            </div>
 
 					      <div class="modal-footer">
-					        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: lest;">Register</button>
-
+					        <button type="submit" class="btn btn-default" style="float: lest;">Register</button>
+						
 					      	<button type="button" class="btn btn-default" data-dismiss="modal" style="float: right;">&times;</button>
 					      </div>
+									</form>
 					    </div>
 
 					  </div>
 					</div>
 
-					</form><!-- /form -->
-				</div><!-- /card-container -->
+				
 				<div ng-if="hasSession.logged">
 					Continue as
 					<a ng-click="redirect()" class="forgot-password">

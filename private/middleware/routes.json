@@ -2,7 +2,8 @@
 	"api":{
 		"all": [
 			"/api/verifysession",
-			"/api/login"
+			"/api/login",
+			"/api/register"
 		],
 
 		"logged": [
