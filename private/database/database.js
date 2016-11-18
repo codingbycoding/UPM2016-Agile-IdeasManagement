@@ -117,7 +117,6 @@
         return new Promise(function (resolve, reject) {
             client.query('INSERT INTO public.ideas SET ?', {idcreator: authorid, ideatitle: title, ideadescription: description},
                                 function (err, result) {
-                                    console.log(err);
                                     if (err) {
                                         reject(err);
                                     } else {
