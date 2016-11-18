@@ -87,6 +87,7 @@
                     deferred.resolve('Success');
                 })
                 .error(function(err) {
+                    console.log(err);
                     deferred.reject(err);
                 });
         };

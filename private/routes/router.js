@@ -160,10 +160,11 @@
          server.get("/api/ideas",function(req,res){
 
              database.getideas()
-               .then(function () {
-                    res.status(200).send('SUCCESS');
+               .then(function (a) {
+                    res.status(200).send(a);
                 })
                 .catch(function (err) {
+                    console.log(err);
                     res.status(406).send('ERRORIDEAAUTHORID');
                 });
         });

@@ -104,7 +104,19 @@
          client.query("SELECT * FROM public.ideas WHERE idcreator=?",[iduser],
             function (err, result) {
                     if (err) {
-                        console.log(err);
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    exports.getideas = function(){
+         return new Promise(function (resolve, reject) {
+         client.query("SELECT public.ideas.*, public.users.name FROM public.ideas INNER JOIN public.users ON public.users.idusers=public.ideas.idcreator",
+            function (err, result) {
+                    if (err) {
                         reject(err);
                     } else {
                         resolve(result);

@@ -7,11 +7,10 @@
 			  userServices.getIdeas()
                     .then(function (ideas) {
                         $scope.ideas = ideas.data;
-                        console.log($scope.ideas);
                         var i;
                     })
                     .catch(function (err) {
-                        $scope.items.push("Field projects: " + err.data);
+                        console.log("ERROR");
                     });
 
             $scope.deleteidea = function(ideaid) {

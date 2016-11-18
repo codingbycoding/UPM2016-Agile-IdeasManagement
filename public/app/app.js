@@ -28,7 +28,7 @@
             })
             .when("/menuadmin", {
 				templateUrl: "app/views/menuadmin.html",
-                controller: "MenuAdminCtrl",
+                controller: "HomeCtrl",
 				css: "styles/home.css"
             })
             .when("/menu", {
@@ -48,7 +48,7 @@
             })
             .when("/manageideas", {
 				templateUrl: "app/views/manageideas.html",
-                controller: "HomeCtrl",
+                controller: "ManageideasCtrl",
 				css: "styles/home.css"
             })
              

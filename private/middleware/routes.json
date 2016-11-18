@@ -15,8 +15,8 @@
 
 		"admin": [
 			"/api/verifysession",
-			"/api/ideas",
-			"/api/deleteidea"
+			"/api/deleteidea",
+			"/api/ideas"
 		]
 	},
 

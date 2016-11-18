@@ -43,19 +43,7 @@ var url = req.url.split('/')[1];
                                     next();
                                 }
                             break;
-                            case "1":
-                                for (i = 0; i < routes.api.advanced.length; i++) {
-                                    if (req.url.indexOf(routes.api.advanced[i]) > -1) {
-                                        break;
-                                    }
-                                }
-                                if (i == routes.api.advanced.length) {
-                                    return res.sendStatus(403);
-                                } else {
-                                    next();
-                                }
-                            break;
-                            case "2": 
+                            case "1": 
                                 for (i = 0; i < routes.api.admin.length; i++) {
                                     if (req.url.indexOf(routes.api.admin[i]) > -1) {
                                         break;
