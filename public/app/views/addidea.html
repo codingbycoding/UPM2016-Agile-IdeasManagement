@@ -1,3 +1,49 @@
-<div id="homeTitle" class="container">
-	<h2>Idea Managment</h2>		
-</div>
+<head>
+	<link rel="stylesheet" type="text/css" href="../../styles/addIdea.css" />
+		
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+		<div class="container">
+			<div class="row main">
+				<div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 class="title">Add Idea</h1>
+	               		<hr />
+	               	</div>
+	            </div> 
+				<div class="main-login main-center">
+
+					<form ng-submit="addidea(idea1)" class="form-horizontal">
+						
+						<div class="form-group">
+							<label class="cols-sm-2 control-label">Title</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<textarea  type="text" class="form-control" ng-model="idea1.title" name="title" id="titleIdea" cols="50" rows="1" placeholder="Enter your idea title"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="cols-sm-2 control-label">Description</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<textarea type="text" class="form-control" ng-model="idea1.description" name="description" id="descriptionIdea" cols="50" rows="8" placeholder="Enter your idea description"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group" style="margin-top:5px;">
+							<button type="button" class="btn btn-primary btn-lg btn-block add-button">Add Idea</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+</body>
