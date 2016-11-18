@@ -1,19 +1,27 @@
-<div id="homeTitle" class="container">
-	<h2>Idea Managment</h2>		
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MyIdeas</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../../styles/addIdea.css" />
+</head>
+<body>
+
+<div class="container" style="margin-top: 50px;" ng-repeat="idea in ideas">
+  <h1 class="title">List My Ideas</h1>
+  <ul class="list-group" style="margin-top: 25px;">
+    <li class="list-group-item">{{idea.ideatitle}} <span class="badge glyphicon glyphicon-chevron-down" tabindex="0"> 0 </span>
+        <p class="alert" >{{idea.ideadescription}}</p>
+    </li>
+  </ul>
 </div>
 
+</body>
+</html>
 
-<table>
-    <tr>
-        <td>Title</td>
-        <td>___</td>
-        <td>Description</td>
-    </tr>
-    <tr ng-repeat="idea in ideas" class="tbl-content">
-        <td>{{idea.ideatitle}}</td>
-        <td>___</td>
-        <td>{{idea.ideadescription}}</td>
-        
-    </tr>
-</table>
 

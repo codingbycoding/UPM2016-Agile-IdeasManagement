@@ -13,7 +13,7 @@ body, html{
  	font-family: 'Oxygen', sans-serif;
 }
 
-.main{
+.main,.topmargin{
  	margin-top: 100px;
 }
 
