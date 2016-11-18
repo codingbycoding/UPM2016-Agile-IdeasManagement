@@ -44,7 +44,7 @@
             .when("/addidea", {
 				templateUrl: "app/views/addidea.html",
                 controller: "AddideaCtrl",
-				css: "styles/home.css"
+                css: "styles/addIdea.css"
             })
             .when("/manageideas", {
 				templateUrl: "app/views/manageideas.html",
