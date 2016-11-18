@@ -9,11 +9,14 @@
 		"logged": [
 			"/api/verifysession",
 			"/api/ideasbyauthor",
-			"/api/createidea"
+			"/api/createidea",
+			"/api/ideas"
 		],
 
 		"admin": [
-			"/api/verifysession"
+			"/api/verifysession",
+			"/api/ideas",
+			"/api/deleteidea"
 		]
 	},
 

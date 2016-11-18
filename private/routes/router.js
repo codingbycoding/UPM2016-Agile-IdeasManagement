@@ -148,10 +148,20 @@
          server.get("/api/ideasbyauthor",function(req,res){
 
              var authorid = req.headers.authorid;
-             console.log(authorid);
              database.getideasbyauthor(authorid)
                .then(function (ll) {
                     res.status(200).send(ll);
+                })
+                .catch(function (err) {
+                    res.status(406).send('ERRORIDEAAUTHORID');
+                });
+        });
+
+         server.get("/api/ideas",function(req,res){
+
+             database.getideas()
+               .then(function () {
+                    res.status(200).send('SUCCESS');
                 })
                 .catch(function (err) {
                     res.status(406).send('ERRORIDEAAUTHORID');

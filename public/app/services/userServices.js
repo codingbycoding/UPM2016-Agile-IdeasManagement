@@ -81,8 +81,27 @@
                     deferred.reject(err);
                 });
         };
+         this.getIdeas = function() {
+            return $http.get('/api/ideas')
+                .success(function(res) {
+                    deferred.resolve('Success');
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+        };
 
         this.createIdea = function(idea) {
+        return $http.delete('/api/deleteidea', idea)
+            .success(function(res) {
+                deferred.resolve("Success");
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
+    this.deleteIdea = function(idea) {
 
         return $http.post('/api/createidea', idea)
             .success(function(res) {

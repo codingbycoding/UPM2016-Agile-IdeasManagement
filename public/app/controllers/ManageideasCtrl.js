@@ -3,7 +3,35 @@
 
 		 console.log('Page loaded.');
 
+        
+			  userServices.getIdeas()
+                    .then(function (ideas) {
+                        $scope.ideas = ideas.data;
+                        console.log($scope.ideas);
+                        var i;
+                    })
+                    .catch(function (err) {
+                        $scope.items.push("Field projects: " + err.data);
+                    });
 
+            $scope.deleteidea = function(ideaid) {
+                   var ll = 
+                                {
+                                    "id": ideaid
+                                };
+
+                                userServices.deleteIdea(ll)
+                                    .then(function (result) {
+                                        window.location="/menuadmin";
+                                    })
+                                    .catch(function (err) {
+                                        console.log("Failed to delete Idea.");
+                                    }); 
+        }  
+
+
+
+         
        
 
 	 };
