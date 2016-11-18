@@ -21,7 +21,10 @@
 
                                 userServices.deleteIdea(ll)
                                     .then(function (result) {
-                                        window.location="/menuadmin";
+                                        angular.forEach($scope.ideas, function(value, key) {
+                                            if(value.idideas==ideaid)
+                                                $scope.ideas.splice(value, 1);
+                                        });
                                     })
                                     .catch(function (err) {
                                         console.log("Failed to delete Idea.");

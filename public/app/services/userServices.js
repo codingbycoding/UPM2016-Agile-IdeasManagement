@@ -104,7 +104,7 @@
     };
     this.deleteIdea = function(idea) {
 
-        return $http.post('/api/createidea', idea)
+        return $http.post('/api/deleteidea', idea)
             .success(function(res) {
                 deferred.resolve(res.insertId);
             })

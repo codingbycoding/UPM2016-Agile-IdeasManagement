@@ -187,5 +187,21 @@
                     });
          });
 
+         server.post("/api/deleteidea",function(req,res){
+                var id = req.body.id;
+
+                database.deleteidea(id)
+                    .then(function (idea) {
+                        res.status(200).send(idea);
+                    })
+                    .catch(function (err) {
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "ERRORINSERTINGIDEA"
+                        });
+
+                    });
+         });
+
     };
 } ());

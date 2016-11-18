@@ -139,5 +139,19 @@
         });
     }
 
+    exports.deleteidea = function (id) {
+        return new Promise(function (resolve, reject) {
+            client.query('DELETE FROM public.ideas WHERE idideas=?', [id],
+                                function (err, result) {
+                                    if (err) {
+                                        reject(err);
+                                    } else {
+                                        resolve(result);
+                                    }
+                                });
+
+        });
+    }
+
 
 }());
