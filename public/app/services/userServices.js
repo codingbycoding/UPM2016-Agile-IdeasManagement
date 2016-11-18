@@ -82,6 +82,18 @@
                 });
         };
 
+        this.createIdea = function(idea) {
+
+        return $http.post('/api/createidea', idea)
+            .success(function(res) {
+                deferred.resolve(res.insertId);
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
+
 
 
 

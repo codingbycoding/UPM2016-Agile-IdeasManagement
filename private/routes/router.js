@@ -158,6 +158,23 @@
                 });
         });
 
+        server.post("/api/createidea",function(req,res){
+                var title = req.body.title;
+                var description = req.body.description;
+                var authorid = req.body.author;
+
+                database.insertidea(title,description,authorid)
+                    .then(function (idea) {
+                        res.status(200).send(idea);
+                    })
+                    .catch(function (err) {
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "ERRORINSERTINGIDEA"
+                        });
+
+                    });
+         });
 
     };
 } ());
