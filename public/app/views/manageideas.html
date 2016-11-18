@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AllIdeas</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../../styles/addIdea.css" />
+</head>
+<body>
+<h1 class="title">List Of All Ideas</h1>
+<div class="container" style="margin-top: 30px;" ng-repeat="idea in ideas">
+  
+  <ul class="list-group" style="margin-top: 25px;">
+    <li class="list-group-item glyphicon glyphicon-user"> <strong>{{idea.name}}</strong>  <u>{{idea.ideatitle}}</u>
+     <a href="#" class="pull-right glyphicon glyphicon-remove" ng-click="deleteidea(idea.idideas)" style="float:right"></a>
+     <p class="alert" >{{idea.ideadescription}}</p>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>
