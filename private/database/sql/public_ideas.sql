@@ -27,7 +27,8 @@ DROP TABLE IF EXISTS `ideas`;
 CREATE TABLE `ideas` (
   `idideas` int(11) NOT NULL AUTO_INCREMENT,
   `idcreator` int(11) DEFAULT NULL,
-  `ideatext` varchar(1000) NOT NULL,
+  `ideatitle` varchar(1000) NOT NULL,
+  `ideadescription` varchar(1000) NOT NULL,
   PRIMARY KEY (`idideas`),
   UNIQUE KEY `idideas_UNIQUE` (`idideas`),
   KEY `creator_idx` (`idcreator`),

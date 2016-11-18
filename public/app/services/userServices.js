@@ -67,7 +67,20 @@
 
         };
 
-
+      this.getIdeasByAuthor = function(userid) {
+            var config = {
+                headers: {
+                    'authorid': userid
+                }
+            };
+            return $http.get('/api/ideasbyauthor', config)
+                .success(function(res) {
+                    deferred.resolve('Success');
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+        };
 
 
 
