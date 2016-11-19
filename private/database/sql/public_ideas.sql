@@ -42,6 +42,7 @@ CREATE TABLE `ideas` (
 
 LOCK TABLES `ideas` WRITE;
 /*!40000 ALTER TABLE `ideas` DISABLE KEYS */;
+INSERT INTO `ideas` VALUES (1,2,'Idea One','Description One'),(2,2,'Idea Two','Description Two'),(3,2,'Idea Three','Description Three'),(4,3,'Idea Four','Description Four');
 /*!40000 ALTER TABLE `ideas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
