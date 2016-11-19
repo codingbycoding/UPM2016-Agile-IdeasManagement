@@ -2,7 +2,7 @@
 	 var  AddideaCtrl = function($scope, $location, $routeParams, $window, userServices) {
 
 		 console.log('Page loaded.');
-
+$scope.items = [];
          	  $scope.addidea = function(idea) {
                    userServices.logged()
                         .then(function(result) {
@@ -23,18 +23,22 @@
                                         window.location="/menu";
                                     })
                                     .catch(function (err) {
-                                        console.log("Failed to save Idea.");
+                                         $scope.items.pop();
+                                        $scope.items.push(err.data.message);
                                     });
 
                         })
                         .catch(function(err) {
-                            console.log('User error.');
-                            console.log(err);
+                             $scope.items.pop();
+                    $scope.items.push(err.data.message);
                         });
 	
 
            
-        }   
+        }
+         $scope.pop = function () {
+            $scope.items.pop();
+        };   
        
 
 	 };

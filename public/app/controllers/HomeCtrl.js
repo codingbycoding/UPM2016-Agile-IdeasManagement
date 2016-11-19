@@ -4,6 +4,7 @@
 		 console.log('Page loaded.');
          $scope.hasSession="";
          $scope.items = [];
+         $scope.items1 = [];
 		 
 		$scope.permission = -1;
 	    $scope.login = function(user,remember){
@@ -26,13 +27,13 @@
         $scope.register = function(user){
              userServices.register(user)
                 .then(function (res) {
-                    $scope.items.pop();
-                    $scope.items.push();
+                    $scope.items1.pop();
+                    $scope.items1.push();
                     $scope.login(user,false);
                 })
                 .catch(function (err) {
-                    $scope.items.pop();
-                    $scope.items.push(err.data.message);
+                    $scope.items1.pop();
+                    $scope.items1.push(err.data.message);
                     
                 });
             
@@ -70,6 +71,9 @@
         };
          $scope.pop = function () {
             $scope.items.pop();
+        };
+        $scope.pop1 = function () {
+            $scope.items1.pop();
         };
         
 		$scope.logged();

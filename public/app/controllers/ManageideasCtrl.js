@@ -2,7 +2,7 @@
 	 var  ManageideasCtrl = function($scope, $location, $routeParams, $window, userServices) {
 
 		 console.log('Page loaded.');
-
+$scope.items = [];
         
 			  userServices.getIdeas()
                     .then(function (ideas) {
@@ -10,7 +10,8 @@
                         var i;
                     })
                     .catch(function (err) {
-                        console.log("ERROR");
+                        $scope.items.pop();
+                    $scope.items.push(err.data.message);
                     });
 
             $scope.deleteidea = function(ideaid) {
@@ -27,11 +28,14 @@
                                         });
                                     })
                                     .catch(function (err) {
-                                        console.log("Failed to delete Idea.");
+                                        $scope.items.pop();
+                    $scope.items.push(err.data.message);
                                     }); 
         }  
 
-
+$scope.pop = function () {
+            $scope.items.pop();
+        };
 
          
        

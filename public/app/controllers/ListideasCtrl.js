@@ -2,7 +2,7 @@
 	 var  ListideasCtrl = function($scope, $location, $routeParams, $window, userServices) {
 
 		 console.log('Page loaded.');
-
+$scope.items = [];
          userServices.logged()
           .then(function(result) {
               console.log('User data loaded.');
@@ -17,18 +17,21 @@
                         var i;
                     })
                     .catch(function (err) {
-                        $scope.items.push("Field projects: " + err.data);
+                         $scope.items.pop();
+                    $scope.items.push(err.data.message);
                     });
 
 
 
           })
           .catch(function(err) {
-              console.log('User error.');
-              console.log(err);
+              $scope.items.pop();
+                    $scope.items.push(err.data.message);
           });
      
-
+$scope.pop = function () {
+            $scope.items.pop();
+        };
 	 };
 	 // Injecting modules used for better minifing later on
     ListideasCtrl.$inject = ['$scope', '$location', '$routeParams', '$window','userServices'];

@@ -50,10 +50,10 @@
                         res.status(200).json(user);
                     })
                     .catch(function (err) {
-                        res.status(406).send('ERRORSESSION');
+                        res.status(406).send('Session error');
                     });
             } else {
-                res.status(404).send('ERRORSESSION');
+                res.status(404).send("Session doesn't exist");
             }
         });
        
@@ -62,12 +62,12 @@
                 email: req.body.email.toLowerCase(),
                 password: utils.checkPassword(req.body.password)
             };
-            req.checkBody("email", "ERRORLOGIN").isEmail();
+            req.checkBody("email", "Not an correct email provided").isEmail();
 
              if(req.validationErrors() || user.password==""){
                  res.status(406).json({
                         message_class: 'error',
-                        message: "ERRORLOGIN"
+                        message: "Password empty"
                     });
              }
 
@@ -82,7 +82,7 @@
                         .catch(function (err) {
                            res.status(406).json({
                         message_class: 'error',
-                        message: "ERRORLOGIN1"
+                        message: "Error creating session, please try again later"
                     });
                         });
 
@@ -92,7 +92,7 @@
                     // Send the Response with message error
                     res.status(406).json({
                         message_class: 'error',
-                        message: "ERRORLOGIN"
+                        message: "No account with that email registered"
                     });
 
                 });
@@ -112,7 +112,7 @@
                 // Check if email is valid.
                 res.status(400).json({
                     message_class: 'error',
-                    message: 'ERRORCREATEEMAIL'
+                    message: 'Email provided is not valid'
                 });
             }
 
@@ -130,14 +130,14 @@
                             // Send the Response with message error
                             res.status(406).json({
                                 message_class: 'error',
-                                message: "ERRORCREATEUSER"
+                                message: "Email already in use"
                             });
 
                         } else {
                             // Sending the error to the log file
                             res.status(406).json({
                                 message_class: 'error',
-                                message: "ERRORCREATINGUSERDB"
+                                message: "Error adding user to the database, please try again later"
                             });
 
                         }
@@ -153,7 +153,7 @@
                     res.status(200).send(ll);
                 })
                 .catch(function (err) {
-                    res.status(406).send('ERRORIDEAAUTHORID');
+                    res.status(406).send('Error retrieving ideas from the database, please try again later');
                 });
         });
 
@@ -165,7 +165,7 @@
                 })
                 .catch(function (err) {
                     console.log(err);
-                    res.status(406).send('ERRORIDEAAUTHORID');
+                    res.status(406).send('Error retrieving ideas from the database, please try again later');
                 });
         });
 
@@ -181,7 +181,7 @@
                     .catch(function (err) {
                         res.status(406).json({
                             message_class: 'error',
-                            message: "ERRORINSERTINGIDEA"
+                            message: "Error addign idea to the database, please try again later"
                         });
 
                     });
@@ -197,7 +197,7 @@
                     .catch(function (err) {
                         res.status(406).json({
                             message_class: 'error',
-                            message: "ERRORINSERTINGIDEA"
+                            message: "Error removing idea from the database, please try again later"
                         });
 
                     });
