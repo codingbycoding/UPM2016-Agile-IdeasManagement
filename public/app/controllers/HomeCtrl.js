@@ -25,6 +25,11 @@
             
         };
         $scope.register = function(user){
+            if(user.password.length<5){
+                $scope.items1.pop();
+                    $scope.items1.push("Password too short");
+            }
+            else{
              userServices.register(user)
                 .then(function (res) {
                     $scope.items1.pop();
@@ -36,7 +41,7 @@
                     $scope.items1.push(err.data.message);
                     
                 });
-            
+            }
         };
         $scope.redirect = function(){
             if($scope.hasSession.data.permission=="1"){
