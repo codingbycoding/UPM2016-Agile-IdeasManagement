@@ -19,20 +19,17 @@ $scope.items = [];
                                 {
                                     "id": ideaid
                                 };
-
+if (confirm('Are you sure you want to delete this?')) {
                                 userServices.deleteIdea(ll)
                                     .then(function (result) {
-                                        angular.forEach($scope.ideas, function(value, key) {
-                                            if(value.idideas==ideaid)
-                                                $scope.ideas.splice(value, 1);
-                                        });
+                                        $window.location.reload();
                                     })
                                     .catch(function (err) {
                                         $scope.items.pop();
                     $scope.items.push(err.data.message);
                                     }); 
         }  
-
+}
 $scope.pop = function () {
             $scope.items.pop();
         };

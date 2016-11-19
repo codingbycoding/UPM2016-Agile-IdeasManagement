@@ -93,7 +93,7 @@
         };
 
         this.createIdea = function(idea) {
-        return $http.delete('/api/deleteidea', idea)
+        return $http.post('/api/createidea', idea)
             .success(function(res) {
                 deferred.resolve("Success");
             })

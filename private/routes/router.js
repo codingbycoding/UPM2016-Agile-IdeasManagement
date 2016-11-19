@@ -92,7 +92,7 @@
                     // Send the Response with message error
                     res.status(406).json({
                         message_class: 'error',
-                        message: "No account with that email registered"
+                        message: "Wrong password Or No account with that email registered"
                     });
 
                 });
