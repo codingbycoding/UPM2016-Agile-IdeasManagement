@@ -18,7 +18,7 @@ run `npm install` from the project's root folder.
  3.   Update the root password to `root1` with `SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root1');`.  
  4.   Create the database and tables (use absolute paths on **Windows**):
    - `\. private/database/sql/public_users.sql` for the **users** table. 
-   - `\. private/database/sql/public_users.sql` for the **ideas** table. 
+   - `\. private/database/sql/public_ideas.sql` for the **ideas** table. 
 
 **N.B.:** You will have to use `mysql -h localhost -u root -p` with the new password next time you want to connect to the management console.
 
