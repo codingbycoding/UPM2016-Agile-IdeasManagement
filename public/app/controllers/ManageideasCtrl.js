@@ -22,6 +22,7 @@ $scope.items = [];
 if (confirm('Are you sure you want to delete this?')) {
                                 userServices.deleteIdea(ll)
                                     .then(function (result) {
+                                        alert("Idea deleted");
                                         $window.location.reload();
                                     })
                                     .catch(function (err) {

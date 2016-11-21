@@ -20,6 +20,7 @@ $scope.items = [];
 
                                 userServices.createIdea(ll)
                                     .then(function (result) {
+                                        alert("Idea created");
                                         window.location="/menu";
                                     })
                                     .catch(function (err) {
