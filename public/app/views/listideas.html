@@ -17,16 +17,170 @@
   <ul class="list-group" style="margin-top: 25px;">
     <li class="list-group-item"> <strong>{{idea.ideatitle}}</strong> <span class="badge glyphicon glyphicon-chevron-down" tabindex="0"> 0 </span>
         <p class="alert" >{{idea.ideadescription}}</p>
-    </li>
+  
     
-    <li class="list-group-item glyphicon glyphicon-edit"> Edit
-  </ul>
-
    <div ng-if="idea.draft">
-   </div>    
    
-
+    <button class="list-group-item glyphicon glyphicon-edit" ng-click={{ideatoupdate=idea}} data-toggle="modal" data-target="#myModal" style="width: 100px;"> Edit </button>
+   </div>  
+    
+    
+  </li>
+  </ul>
 </div>
+  
+  <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit Draft Idea</h4>
+          </div>
+          <form ng-submit="updateidea(idea1)" class="form-horizontal">
+            
+                    <div class="control-group" style="margin-left: 10px;">
+              <label class="cols-sm-2 control-label">Title</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <textarea  type="text" class="form-control" ng-model="idea1.title" name="title" id="titleIdea" cols="50" rows="1" value={{idea1.title}}></textarea>
+                </div>
+              </div>
+            </div>
+
+                    <div class="control-group" style="margin-left: 10px;">
+              <label class="cols-sm-2 control-label">Description</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <textarea type="text" class="form-control" ng-model="idea1.description" name="description" id="descriptionIdea" cols="50" rows="8" value={{idea1.title}}></textarea>
+                </div>
+              </div>
+            </div>
+
+
+                    <div class="control-group" style="margin-left: 10px;">
+            <label class="cols-sm-2 control-label">Categories</label>
+            <table>
+              <tr>
+                <div class="row1">
+
+                <div ng-if="idea.health">
+                  <td><input type="checkbox" ng-model="idea1.Health" name="Health" value="Health" /> Health
+                  </td>
+                  </div>
+                  <div ng-else>
+                    <td><input type="checkbox" ng-model="idea1.Health" name="Health" value="Health" checked/> Health
+                  </td>
+                </div>
+
+                <div ng-if="idea.social">
+                  <td><input type="checkbox" ng-model="idea1.Social" name="Social" value="Social" /> Social
+                  </td>
+                </div>
+                  <div ng-else>
+                    <td><input type="checkbox" ng-model="idea1.Social" name="Social" value="Social" checked/> Social
+                  </td>
+                </div>                  
+
+                <div ng-if="idea.economic">
+                  <td><input type="checkbox" ng-model="idea1.Economic" name="Economic" value="Economic" /> Economic
+                  </td>
+                </div>
+                  <div ng-else>
+                    <td><input type="checkbox" ng-model="idea1.Economic" name="Economic" value="Economic" checked/> Economic
+                  </td>
+                </div>   
+                
+                </div>
+              
+            </tr>
+              <tr>
+                <div class="row2">
+
+                <div ng-if="idea.cientific">
+                  <td><input type="checkbox" ng-model="idea1.Cientific" name="Cientific" value="Cientific" /> Cientific
+                  </td>
+                </div>
+                  <div ng-else>
+                    <td><input type="checkbox" ng-model="idea1.Cientific" name="Cientific" value="Cientific" checked/> Cientific
+                  </td>
+                </div>   
+
+
+        <div ng-if="idea.educational">
+                    <td><input type="checkbox" ng-model="idea1.Educational" name="Educational" value="Educational" /> Educational
+                    </td>
+                  </div>
+                    <div ng-else>
+                      <td><input type="checkbox" ng-model="idea1.Educational" name="Educational" value="Educational" checked/> Educational
+                    </td>
+                  </div>   
+
+
+          <div ng-if="idea.business">
+                    <td><input type="checkbox" ng-model="idea1.Business" name="Business" value="Business" /> Business
+                    </td>
+                  </div>
+                    <div ng-else>
+                      <td><input type="checkbox" ng-model="idea1.Business" name="Business" value="Business" checked/> Business
+                    </td>
+                  </div>   
+
+                </div>
+              </tr>
+              <tr>
+                <div class="row3">
+
+                 <div ng-if="idea.finance">
+                  <td><input type="checkbox" ng-model="idea1.Finance" name="Finance" value="Finance" /> Finance
+                  </td>
+                </div>
+                  <div ng-else>
+                    <td><input type="checkbox" ng-model="idea1.Finance" name="Finance" value="Finance" checked/> Finance
+                  </td>
+                </div>   
+
+                 <div ng-if="idea.personal">
+                  <td><input type="checkbox" ng-model="idea1.Personal" name="Personal" value="Personal" /> Personal
+                  </td>
+                </div>
+                  <div ng-else>
+                    <td><input type="checkbox" ng-model="idea1.Personal" name="Personal" value="Personal" checked/> Personal
+                  </td>
+                </div>   
+
+                </div>
+              </tr>
+              </table>
+              </div>
+              <br>
+                    <div class="control-group" style="margin-left: 10px;">
+                <label class="cols-sm-2 control-label">Price</label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                  <input id="price" name="price" ng-model="idea1.price"class="form-control" type="number" min="0" max="100000000" value={{idea.price}} class="input-large" required>
+                  <p>Price must be between 0 and 100 000 000</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+            <button type="submit" ng-click='draft="0"' style="float:left;" class="btn btn-default" data-dismiss="modal">Edit Idea</button>
+             <button type="submit" ng-click='draft="1"' style="float:left;" class="btn btn-default" data-dismiss="modal">Save Idea</button>
+
+            <div class="row animation error-message text-center" ng-repeat="item in items1">
+            {{item}}<a href="#" class="pull-right" ng-click="pop()"><span class="glyphicon glyphicon-remove glyphicon-white"></span></a>
+          </div>
+
+          </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+    
 
 	<div class="row animation error-message text-center" ng-repeat="item in items">
 					{{item}}<a href="#" class="pull-right" ng-click="pop()"><span class="glyphicon glyphicon-remove glyphicon-white"></span></a>
