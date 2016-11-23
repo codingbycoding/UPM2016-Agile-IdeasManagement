@@ -113,6 +113,17 @@
             });
 
     };
+    this.updateIdea = function(idea) {
+
+        return $http.update('/api/updateidea', idea)
+            .success(function(res) {
+                deferred.resolve("Success");
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
 
 
 
