@@ -182,6 +182,7 @@
                 var finance = req.body.finance;
                 var personal = req.body.personal;
                 var draft = req.body.draft;
+                var price = req.body.price;
                 if(health=="0" && social=="0" && economic=="0" && cientific=="0" && educational=="0" && business=="0" && finance=="0" && personal=="0"){
                     res.status(406).json({
                             message_class: 'error',

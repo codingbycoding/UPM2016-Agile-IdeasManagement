@@ -125,9 +125,9 @@
          });
     }
 
-    exports.insertidea = function (title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft) {
+    exports.insertidea = function (title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price) {
         return new Promise(function (resolve, reject) {
-            client.query('INSERT INTO public.ideas SET ?', {idcreator: authorid, ideatitle: title, ideadescription: description, health: health,social: social,economic: economic,cientific: cientific,educational: educational,business: business,finance: finance,personal: personal,draft: draft},
+            client.query('INSERT INTO public.ideas SET ?', {idcreator: authorid, ideatitle: title, ideadescription: description, health: health, social: social, economic: economic, cientific: cientific, educational: educational, business: business, finance: finance, personal: personal, draft: draft, price: price},
                                 function (err, result) {
                                     if (err) {
                                         reject(err);
