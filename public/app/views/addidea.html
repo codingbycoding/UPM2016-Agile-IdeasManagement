@@ -39,22 +39,45 @@
 						</div>
 
 						<label class="cols-sm-2 control-label">Categories</label>
-						<div class="row1">
-							<input type="checkbox" ng-model="idea1.Health" name="Health" value="Health" /> Health
-							<input type="checkbox" ng-model="idea1.Social" name="Social" value="Social" /> Social
-							<input type="checkbox" ng-model="idea1.Economic" name="Economic" value="Economic" /> Economic
-						</div>
-						<div class="row2">
-							<input type="checkbox" ng-model="idea1.Cientific" name="Cientific" value="Cientific" /> Cientific
-							<input type="checkbox" ng-model="idea1.Educational" name="Educational" value="Educational" /> Educational
-							<input type="checkbox" ng-model="idea1.Business" name="Business" value="Business" /> Business
-						</div>
-						<div class="row3">
-							<input type="checkbox" ng-model="idea1.Finance" name="Finance" value="Finance" /> Finance
-							<input type="checkbox" ng-model="idea1.Personal" name="Personal" value="Personal" /> Personal
-						</div>
+						<table>
+						  <tr>
+								<div class="row1">
+									<td><input type="checkbox" ng-model="idea1.Health" name="Health" value="Health" /> Health
+									</td>
+									<td><input type="checkbox" ng-model="idea1.Social" name="Social" value="Social" /> Social
+									</td>
+									<td><input type="checkbox" ng-model="idea1.Economic" name="Economic" value="Economic" /> Economic</td>
+								</div>
+							
+						</tr>
+							<tr>
+								<div class="row2">
+									<td><input type="checkbox" ng-model="idea1.Cientific" name="Cientific" value="Cientific" /> Cientific </td>
+									<td><input type="checkbox" ng-model="idea1.Educational" name="Educational" value="Educational" /> Educational</td>
+									<td><input type="checkbox" ng-model="idea1.Business" name="Business" value="Business" /> Business</td>
+								</div>
+							</tr>
+							<tr>
+								<div class="row3">
+									<td><input type="checkbox" ng-model="idea1.Finance" name="Finance" value="Finance" /> Finance</td>
+									<td><input type="checkbox" ng-model="idea1.Personal" name="Personal" value="Personal" /> Personal</td>
+								</div>
+							</tr>
+							</table>
+							<br>
+							<div class="form-group">
+								<label class="cols-sm-2 control-label">Price</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+									<input type="number" min="0" max="100000000" ng-model="idea1.price" placeholder="Price must be between 0 and 100 000 000" style="width: 275px;" />
+									</div>
+								</div>
+							</div>
+
+							
 						<div class="form-group" style="margin-top:5px;">
-							<button type="submit" class="btn btn-primary btn-lg btn-block add-button">Add Idea</button>
+							<button type="submit" ng-click='draft="0"' class="btn btn-primary btn-lg btn-block add-button">Add Idea</button>
+							<button style="float:right;" ng-click='draft="1"' type="submit" class="btn btn-primary btn-lg btn-block add-button">Save Idea</button>
 						</div>
 
 					</form>

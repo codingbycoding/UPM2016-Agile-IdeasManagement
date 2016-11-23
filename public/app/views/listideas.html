@@ -18,8 +18,16 @@
     <li class="list-group-item"> <strong>{{idea.ideatitle}}</strong> <span class="badge glyphicon glyphicon-chevron-down" tabindex="0"> 0 </span>
         <p class="alert" >{{idea.ideadescription}}</p>
     </li>
+    
+    <li class="list-group-item glyphicon glyphicon-edit"> Edit
   </ul>
+
+   <div ng-if="idea.draft">
+   </div>    
+   
+
 </div>
+
 	<div class="row animation error-message text-center" ng-repeat="item in items">
 					{{item}}<a href="#" class="pull-right" ng-click="pop()"><span class="glyphicon glyphicon-remove glyphicon-white"></span></a>
 				</div>
