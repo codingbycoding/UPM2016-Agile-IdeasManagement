@@ -130,6 +130,7 @@
             client.query('INSERT INTO public.ideas SET ?', {idcreator: authorid, ideatitle: title, ideadescription: description, health: health, social: social, economic: economic, cientific: cientific, educational: educational, business: business, finance: finance, personal: personal, draft: draft, price: price},
                                 function (err, result) {
                                     if (err) {
+                                        console.log(err);
                                         reject(err);
                                     } else {
                                         resolve(result);

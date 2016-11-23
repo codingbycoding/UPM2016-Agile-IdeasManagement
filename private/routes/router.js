@@ -189,7 +189,7 @@
                             message: "Error, at least one category must be choosen"
                         });
                 }
-                database.insertidea(title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft)
+                database.insertidea(title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price)
                     .then(function (idea) {
                         res.status(200).send(idea);
                     })

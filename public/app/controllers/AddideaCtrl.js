@@ -5,27 +5,41 @@
 $scope.items = [];
 $scope.draft="0";
          	  $scope.addidea = function(idea) {
-                   alert($scope.draft);
+                   if(!idea.Health)
+                    idea.Health='0';
+                   if(!idea.Social)
+                    idea.Social='0';
+                   if(!idea.Economic)
+                    idea.Economic='0';
+                   if(!idea.Cientific)
+                    idea.Cientific='0';
+                   if(!idea.Educational)
+                    idea.Educational='0';
+                   if(!idea.Business)
+                    idea.Business='0';
+                   if(!idea.Finance)
+                    idea.Finance='0';
+                   if(!idea.Personal)
+                    idea.Personal='0';
                    userServices.logged()
                         .then(function(result) {
                             console.log('User data loaded.');
                             $scope.user = result.data;
                             $scope.userid = result.data.idusers;
                             authorid = result.data.idusers;
-                            
                              var ll = 
                                 {
                                     "title": idea.title,
                                     "description": idea.description,
                                     "author": authorid,
-                                    "health": idea.health,
-                                    "social": idea.social,
-                                    "economic": idea.economic,
-                                    "cientific": idea.cientific,
-                                    "educational": idea.educational,
-                                    "business": idea.business,
-                                    "finance": idea.finance,
-                                    "personal": idea.personal,
+                                    "health": idea.Health,
+                                    "social": idea.Social,
+                                    "economic": idea.Economic,
+                                    "cientific": idea.Cientific,
+                                    "educational": idea.Educational,
+                                    "business": idea.Business,
+                                    "finance": idea.Finance,
+                                    "personal": idea.Personal,
                                     "draft": $scope.draft,
                                     "price": idea.price
                                 };
