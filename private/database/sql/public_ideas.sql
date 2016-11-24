@@ -29,6 +29,16 @@ CREATE TABLE `ideas` (
   `idcreator` int(11) DEFAULT NULL,
   `ideatitle` varchar(1000) NOT NULL,
   `ideadescription` varchar(1000) NOT NULL,
+  `health` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `social` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `economic` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `cientific` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `educational` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `business` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `finance` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `personal` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `draft` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `price` int(11) NOT NULL,
   PRIMARY KEY (`idideas`),
   UNIQUE KEY `idideas_UNIQUE` (`idideas`),
   KEY `creator_idx` (`idcreator`),
@@ -42,7 +52,7 @@ CREATE TABLE `ideas` (
 
 LOCK TABLES `ideas` WRITE;
 /*!40000 ALTER TABLE `ideas` DISABLE KEYS */;
-INSERT INTO `ideas` VALUES (1,2,'Idea One','Description One'),(2,2,'Idea Two','Description Two'),(3,2,'Idea Three','Description Three'),(4,3,'Idea Four','Description Four');
+INSERT INTO `ideas` VALUES (1,2,'Idea One','Description One','0','1','0','1','0','0','0','0','0',10),(2,2,'Idea Two','Description Two','0','0','1','1','0','0','0','0','0',10),(3,2,'Idea Three','Description Three','0','0','0','0','0','0','1','1','0',10),(4,3,'Idea Four','Description Four','1','1','0','0','0','0','0','0','0',10);
 /*!40000 ALTER TABLE `ideas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

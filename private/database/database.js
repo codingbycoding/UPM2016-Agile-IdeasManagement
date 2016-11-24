@@ -138,11 +138,12 @@
          });
     }
 
-    exports.insertidea = function (title,description,authorid) {
+    exports.insertidea = function (title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price) {
         return new Promise(function (resolve, reject) {
-            client.query('INSERT INTO public.ideas SET ?', {idcreator: authorid, ideatitle: title, ideadescription: description},
+            client.query('INSERT INTO public.ideas SET ?', {idcreator: authorid, ideatitle: title, ideadescription: description, health: health, social: social, economic: economic, cientific: cientific, educational: educational, business: business, finance: finance, personal: personal, draft: draft, price: price},
                                 function (err, result) {
                                     if (err) {
+                                        console.log(err);
                                         reject(err);
                                     } else {
                                         resolve(result);
@@ -164,6 +165,20 @@
                                 });
 
         });
+    }
+
+    exports.updateidea = function (id,title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price) {
+        return new Promise(function (resolve, reject) {
+         client.query('UPDATE public.ideas SET ideatitle=?, ideadescription=?, health=?,social=?,economic=?,cientific=?,educational=?,business=?,finance=?,personal=?,draft=?,price=?  WHERE idideas = ?', [title,description,health,social,economic,cientific,educational,business,finance,personal,draft,price,id],
+            function (err, result) {
+                    if (err) {
+                        console.log(err);
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
     }
 
 

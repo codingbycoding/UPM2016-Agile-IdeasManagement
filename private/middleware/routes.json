@@ -12,7 +12,12 @@
 			"/api/all_ideas",
 			"/api/createidea",
 			"/api/ideas",
-			"/api/get_all_ideas"
+
+			"/api/get_all_ideas",
+
+			"/api/deleteidea",
+			"/api/updateidea"
+
 		],
 
 		"admin": [

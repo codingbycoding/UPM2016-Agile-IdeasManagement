@@ -201,15 +201,30 @@
                 var title = req.body.title;
                 var description = req.body.description;
                 var authorid = req.body.author;
-
-                database.insertidea(title,description,authorid)
+                var health = req.body.health;
+                var social = req.body.social;
+                var economic = req.body.economic;
+                var cientific = req.body.cientific;
+                var educational = req.body.educational;
+                var business = req.body.business;
+                var finance = req.body.finance;
+                var personal = req.body.personal;
+                var draft = req.body.draft;
+                var price = req.body.price;
+                if(health=="0" && social=="0" && economic=="0" && cientific=="0" && educational=="0" && business=="0" && finance=="0" && personal=="0"){
+                    res.status(406).json({
+                            message_class: 'error',
+                            message: "Error, at least one category must be choosen"
+                        });
+                }
+                database.insertidea(title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price)
                     .then(function (idea) {
                         res.status(200).send(idea);
                     })
                     .catch(function (err) {
                         res.status(406).json({
                             message_class: 'error',
-                            message: "Error addign idea to the database, please try again later"
+                            message: "Error adding idea to the database, please try again later"
                         });
 
                     });
@@ -226,6 +241,40 @@
                         res.status(406).json({
                             message_class: 'error',
                             message: "Error removing idea from the database, please try again later"
+                        });
+
+                    });
+         });
+
+         server.post("/api/updateidea",function(req,res){
+                var id = req.body.id;
+                 var title = req.body.title;
+                var description = req.body.description;
+                var authorid = req.body.author;
+                var health = req.body.health;
+                var social = req.body.social;
+                var economic = req.body.economic;
+                var cientific = req.body.cientific;
+                var educational = req.body.educational;
+                var business = req.body.business;
+                var finance = req.body.finance;
+                var personal = req.body.personal;
+                var draft = req.body.draft;
+                var price = req.body.price;
+                  if(health=="0" && social=="0" && economic=="0" && cientific=="0" && educational=="0" && business=="0" && finance=="0" && personal=="0"){
+                    res.status(406).json({
+                            message_class: 'error',
+                            message: "Error, at least one category must be choosen"
+                        });
+                }
+                database.updateidea(id,title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price)
+                    .then(function (idea) {
+                        res.status(200).send(idea);
+                    })
+                    .catch(function (err) {
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "Error updating idea in the database, please try again later"
                         });
 
                     });
