@@ -39,6 +39,10 @@
             res.render('index');
         });
 
+        server.get('/list_all_users', function (req, res) {
+            res.render('index');
+        });
+
         // Route to send forbidden view
         server.get('/forbidden', function (req, res) {
             res.render('index');
@@ -195,6 +199,18 @@
                 console.log(err);
                 res.status(406).send('Error retrieving ideas from the database, please try again later');
             });
+        });         
+
+        server.get("/api/get_all_users",function(req,res){
+
+            database.get_all_users()
+                .then(function (a) {
+                    res.status(200).send(a);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                    res.status(406).send('Error retrieving users from the database, please try again later');
+                });
         });         
 
         server.post("/api/createidea",function(req,res){

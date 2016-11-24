@@ -56,6 +56,12 @@
                 controller: "ManageideasCtrl",
 				css: "styles/home.css"
             })
+            .when("/list_all_users", {
+		templateUrl: "app/views/list_all_users.html",
+                controller: "ListAllUsersCtrl",
+		css: "styles/home.css"
+            })
+
              
             .otherwise({
                 redirectTo: '/forbidden'

@@ -67,6 +67,17 @@
 
         };
 
+        this.getAllUsers = function() {
+            return $http.get('/api/get_all_users')
+                .success(function(res) {
+                    deferred.resolve('Success');
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+        };
+
+        
       this.getIdeasByAuthor = function(userid) {
             var config = {
                 headers: {

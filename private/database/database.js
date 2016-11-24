@@ -99,7 +99,22 @@
             });
         });
     }
-    exports.getideasbyauthor = function(iduser){
+
+    exports.get_all_users = function(){
+        return new Promise(function (resolve, reject) {
+            client.query("SELECT * FROM public.users",
+                         function (err, result) {
+                             if (err) {
+                                 reject(err);
+                             } else {
+                                 resolve(result);
+                             }
+                         });
+        });
+    }
+
+    
+    exports.getideasbyauthor = function(){
          return new Promise(function (resolve, reject) {
          client.query("SELECT * FROM public.ideas WHERE idcreator=?",[iduser],
             function (err, result) {

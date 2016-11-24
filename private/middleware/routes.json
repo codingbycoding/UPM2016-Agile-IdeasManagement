@@ -23,7 +23,8 @@
 		"admin": [
 			"/api/verifysession",
 			"/api/deleteidea",
-			"/api/ideas"
+   		        "/api/ideas",
+                        "/api/get_all_users"
 		]
 	},
 
@@ -41,7 +42,8 @@
 		],
 		"admin": [
 			"menuadmin",
-			"manageideas"
+			"manageideas",
+                        "list_all_users"
 		]
 	}
 }
