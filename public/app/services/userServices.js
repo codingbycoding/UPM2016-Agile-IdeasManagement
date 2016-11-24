@@ -115,7 +115,7 @@
     };
     this.updateIdea = function(idea) {
 
-        return $http.update('/api/updateidea', idea)
+        return $http.put('/api/updateidea', idea)
             .success(function(res) {
                 deferred.resolve("Success");
             })

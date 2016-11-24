@@ -218,7 +218,7 @@
                     });
          });
 
-         server.update("/api/updateidea",function(req,res){
+         server.put("/api/updateidea",function(req,res){
                 var id = req.body.idideas;
                  var title = req.body.title;
                 var description = req.body.description;

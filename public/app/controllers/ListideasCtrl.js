@@ -6,6 +6,7 @@ $scope.items = [];
 $scope.items1 = [];
 $scope.draft="0";
 $scope.ideatoupdate = [];
+$scope.idea1=[];
          userServices.logged()
           .then(function(result) {
               console.log('User data loaded.');
@@ -16,7 +17,6 @@ $scope.ideatoupdate = [];
 			  userServices.getIdeasByAuthor(authorid)
                     .then(function (ideas) {
                         $scope.ideas = ideas.data;
-                        console.log($scope.ideas);
                         var i;
                     })
                     .catch(function (err) {
@@ -33,6 +33,7 @@ $scope.ideatoupdate = [];
           });
 
 $scope.updateidea = function(idea){
+    alert("qqqqqqqqqq");
     idea.idideas=$scope.ideatoupdate.idideas;
      userServices.updateIdea(idea)
                 .then(function (res) {
@@ -47,6 +48,11 @@ $scope.updateidea = function(idea){
 };
      $scope.pop1 = function () {
             $scope.items1.pop();
+        };
+         $scope.ideatoupdatef = function (idea) {
+            $scope.ideatoupdate = idea;
+            $scope.idea1 = idea;
+            alert(JSON.stringify($scope.ideatoupdate));
         };
 $scope.pop = function () {
             $scope.items.pop();
