@@ -96,3 +96,15 @@ table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+img{
+    max-width:40px;
+}
+
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
