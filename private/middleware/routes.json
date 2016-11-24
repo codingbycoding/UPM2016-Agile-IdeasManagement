@@ -11,6 +11,7 @@
 			"/api/ideasbyauthor",
 			"/api/createidea",
 			"/api/ideas",
+			"/api/deleteidea",
 			"/api/updateidea"
 		],
 

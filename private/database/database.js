@@ -156,9 +156,10 @@
 
     exports.updateidea = function (id,title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price) {
         return new Promise(function (resolve, reject) {
-         client.query('UPDATE public.ideas SET ideatitle=?, ideadescription=?, health=?,social=?,economic=?,cientific=?,educational=?,business=?,finance=?,personal=?,draft=?,price=?  WHERE idideas = ?', [title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price,id],
+         client.query('UPDATE public.ideas SET ideatitle=?, ideadescription=?, health=?,social=?,economic=?,cientific=?,educational=?,business=?,finance=?,personal=?,draft=?,price=?  WHERE idideas = ?', [title,description,health,social,economic,cientific,educational,business,finance,personal,draft,price,id],
             function (err, result) {
                     if (err) {
+                        console.log(err);
                         reject(err);
                     } else {
                         resolve(result);

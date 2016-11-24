@@ -218,8 +218,8 @@
                     });
          });
 
-         server.put("/api/updateidea",function(req,res){
-                var id = req.body.idideas;
+         server.post("/api/updateidea",function(req,res){
+                var id = req.body.id;
                  var title = req.body.title;
                 var description = req.body.description;
                 var authorid = req.body.author;
@@ -233,6 +233,12 @@
                 var personal = req.body.personal;
                 var draft = req.body.draft;
                 var price = req.body.price;
+                  if(health=="0" && social=="0" && economic=="0" && cientific=="0" && educational=="0" && business=="0" && finance=="0" && personal=="0"){
+                    res.status(406).json({
+                            message_class: 'error',
+                            message: "Error, at least one category must be choosen"
+                        });
+                }
                 database.updateidea(id,title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price)
                     .then(function (idea) {
                         res.status(200).send(idea);
