@@ -114,7 +114,7 @@
 
         exports.get_all_ideas = function(iduser){
          return new Promise(function (resolve, reject) {
-         client.query("SELECT * FROM public.ideas",
+         client.query("SELECT public.ideas.*, public.users.name FROM public.ideas INNER JOIN public.users ON public.users.idusers=public.ideas.idcreator",
             function (err, result) {
                     if (err) {
                         reject(err);

@@ -187,7 +187,7 @@
 
         server.get("/api/get_all_ideas",function(req,res){
 
-         database.getideas()
+         database.get_all_ideas()
            .then(function (a) {
                 res.status(200).send(a);
             })
