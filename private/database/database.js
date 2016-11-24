@@ -114,11 +114,12 @@
     }
 
     
-    exports.getideasbyauthor = function(){
+    exports.getideasbyauthor = function(iduser){
          return new Promise(function (resolve, reject) {
          client.query("SELECT * FROM public.ideas WHERE idcreator=?",[iduser],
             function (err, result) {
                     if (err) {
+                        console.log(err);
                         reject(err);
                     } else {
                         resolve(result);

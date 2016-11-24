@@ -161,6 +161,7 @@
                     res.status(200).send(ll);
                 })
                 .catch(function (err) {
+                    console.log(err);
                     res.status(406).send('Error retrieving ideas from the database, please try again later');
                 });
         });
