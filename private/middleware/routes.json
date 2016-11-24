@@ -9,8 +9,10 @@
 		"logged": [
 			"/api/verifysession",
 			"/api/ideasbyauthor",
+			"/api/all_ideas",
 			"/api/createidea",
-			"/api/ideas"
+			"/api/ideas",
+			"/api/get_all_ideas"
 		],
 
 		"admin": [
@@ -29,7 +31,8 @@
 		"logged": [
 			"listmyideas",
 			"menu",
-			"addidea"
+			"addidea",
+			"list_all_ideas"
 		],
 		"admin": [
 			"menuadmin",

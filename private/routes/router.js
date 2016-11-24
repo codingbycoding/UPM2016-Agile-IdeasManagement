@@ -35,6 +35,10 @@
             res.render('index');
         });
 
+        server.get('/list_all_ideas', function (req, res) {
+            res.render('index');
+        });
+
         // Route to send forbidden view
         server.get('/forbidden', function (req, res) {
             res.render('index');
@@ -157,6 +161,18 @@
                 });
         });
 
+         server.get("/api/all_ideas",function(req,res){
+
+             var authorid = req.headers.authorid;
+             database.getideasbyauthor(authorid)
+               .then(function (ll) {
+                    res.status(200).send(ll);
+                })
+                .catch(function (err) {
+                    res.status(406).send('Error retrieving ideas from the database, please try again later');
+                });
+        });
+
          server.get("/api/ideas",function(req,res){
 
              database.getideas()
@@ -168,6 +184,18 @@
                     res.status(406).send('Error retrieving ideas from the database, please try again later');
                 });
         });
+
+        server.get("/api/get_all_ideas",function(req,res){
+
+         database.getideas()
+           .then(function (a) {
+                res.status(200).send(a);
+            })
+            .catch(function (err) {
+                console.log(err);
+                res.status(406).send('Error retrieving ideas from the database, please try again later');
+            });
+        });         
 
         server.post("/api/createidea",function(req,res){
                 var title = req.body.title;

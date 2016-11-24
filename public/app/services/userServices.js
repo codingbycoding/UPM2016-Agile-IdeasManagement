@@ -81,6 +81,22 @@
                     deferred.reject(err);
                 });
         };
+
+        this.getAllIdeas = function(userid) {
+            var config = {
+                headers: {
+                    'authorid': userid
+                }
+            };
+            return $http.get('/api/get_all_ideas', config)
+                .success(function(res) {
+                    deferred.resolve('Success');
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+        };
+
          this.getIdeas = function() {
             return $http.get('/api/ideas')
                 .success(function(res) {

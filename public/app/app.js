@@ -41,6 +41,11 @@
                 controller: "ListideasCtrl",
 				css: "styles/home.css"
             })
+            .when("/list_all_ideas", {
+                templateUrl: "app/views/list_all_ideas.html",
+                controller: "ListAllIdeasCtrl",
+                css: "styles/home.css"
+            })
             .when("/addidea", {
 				templateUrl: "app/views/addidea.html",
                 controller: "AddideaCtrl",
