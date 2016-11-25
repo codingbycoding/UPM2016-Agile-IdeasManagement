@@ -42,19 +42,19 @@
               <div class="row">
                   <div class="col-md-8">
                     <div class="page-header">
-                      <h1><small class="pull-right">45 comments</small> Comments </h1>
+                      <h1><small class="pull-right"></small> Comments </h1>
                     </div> 
 
-                     <div class="comments-list">
+                     <div class="comments-list" ng-repeat="comment in comments">
                          <div class="media">
-                             <a href="#" class="pull-right glyphicon glyphicon-remove" ng-click="deletecomment(idea.idideas)" style="float:right"> Delete Comment</a>
+                             <a href="#" class="pull-right glyphicon glyphicon-remove" ng-click="deletecomment(comment.idcomments)" style="float:right"> Delete Comment</a>
                               <a class="media-left" href="#">
                                 <img src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg">
                               </a>
                               <div class="media-body">
                                   
-                                <h4 class="media-heading user_name">Baltej Singh</h4>
-                                Wow! this is really great.
+                                <h4 class="media-heading user_name">{{comment.name}}</h4>
+                                {{comment.text}}
                                 
                               </div>
                             </div>
