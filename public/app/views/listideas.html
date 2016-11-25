@@ -17,7 +17,7 @@
   <ul class="list-group" style="margin-top: 25px;">
     <li class="list-group-item">  <div ng-if="idea.draft=='1'" style="display:inline-block;"> [Draft] </div>
        <div ng-if="idea.draft=='0'" style="display:inline-block;"> [Submitted] </div>     <strong>{{idea.ideatitle}}</strong> 
-       <button class="badge glyphicon glyphicon-chevron-down shownowcomments" ng-click="showDiv = !showDiv" tabindex="0"> 0 </button>
+       <button class="badge glyphicon glyphicon-chevron-down shownowcomments" ng-click="showDiv = !showDiv;getcomments(idea.idideas)" tabindex="0"> Show Comments </button>
         <p class="alert" >{{idea.ideadescription}}</p>
   
   
@@ -47,22 +47,22 @@
             <div class="row">
                 <div class="col-md-8">
                   <div class="page-header">
-                    <h1><small class="pull-right">45 comments</small> Comments </h1>
+                    <h1><small class="pull-right"></small> Comments </h1>
                   </div> 
 
                   <textarea class="form-control" name="addComment" id="addComment" rows="5" maxlength="250"></textarea>
                   <button type="submit" ng-click='' class="btn btn-primary btn-lg btn-block add-button">Add Comment</button>
 
                   <br> <br>
-                   <div class="comments-list">
+                   <div class="comments-list" ng-repeat="comment in comments">
                        <div class="media">
                             <a class="media-left" href="#">
                               <img src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg">
                             </a>
                             <div class="media-body">
                                 
-                              <h4 class="media-heading user_name">Baltej Singh</h4>
-                              Wow! this is really great.
+                              <h4 class="media-heading user_name">{{comment.name}}</h4>
+                              {{comment.text}}
                               
                             </div>
                           </div>
