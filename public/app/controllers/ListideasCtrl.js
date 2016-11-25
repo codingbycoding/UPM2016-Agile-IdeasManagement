@@ -51,8 +51,22 @@ $scope.getcomments = function(id){
                     $scope.items.push(err.data.message);
                     });
 };
-$scope.addcomment = function(com,){
-
+$scope.addcomment = function(com,idea){
+    var kk = {
+        "author": $scope.user.idusers,
+        "idideas": idea,
+        "text": com
+    };
+     userServices.addcomment(kk)
+                .then(function (res) {
+                   alert("Comment Added");
+                   $window.location.reload();
+                })
+                .catch(function (err) {
+                    $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    
+                });
 };
 $scope.updateidea = function(){
      var ll = 
