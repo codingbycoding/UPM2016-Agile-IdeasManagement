@@ -16,15 +16,19 @@
 			"/api/get_all_ideas",
 
 			"/api/deleteidea",
-			"/api/updateidea"
+			"/api/updateidea",
+			"/api/addcomment",
+			"/api/getcomments"
 
 		],
 
 		"admin": [
 			"/api/verifysession",
 			"/api/deleteidea",
-   		        "/api/ideas",
-            "/api/get_all_users"
+   		    "/api/ideas",
+            "/api/get_all_users",
+			"/api/deletecomment",
+			"/api/getcomments"
 		]
 	},
 

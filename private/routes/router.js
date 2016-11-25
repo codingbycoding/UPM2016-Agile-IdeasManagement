@@ -297,5 +297,56 @@
                     });
          });
 
+         server.get("/api/getcomments",function(req,res){
+             var id = req.body.id;
+            database.getcomments(id)
+                .then(function (a) {
+                    res.status(200).send(a);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                    res.status(406).send('Error retrieving comments from the database, please try again later');
+                });
+        });
+
+        server.post("/api/addcomment",function(req,res){
+                var text = req.body.text;
+                var id = req.body.idideas;
+                var authorid = req.body.author;
+                
+                if(text==null){
+                    res.status(406).json({
+                            message_class: 'error',
+                            message: "Error, you can't add an empty comment"
+                        });
+                }
+                database.addcomment(id,authorid,text)
+                    .then(function (idea) {
+                        res.status(200).send(idea);
+                    })
+                    .catch(function (err) {
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "Error adding comment to the database, please try again later"
+                        });
+
+                    });
+         });
+
+         server.post("/api/deletecomment",function(req,res){
+                var id = req.body.idideas;
+                
+                database.deletecomment(id)
+                    .then(function (idea) {
+                        res.status(200).send(idea);
+                    })
+                    .catch(function (err) {
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "Error removing comment from the database, please try again later"
+                        });
+
+                    });
+         });
     };
 } ());

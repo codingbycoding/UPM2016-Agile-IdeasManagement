@@ -151,6 +151,39 @@
             });
 
     };
+    this.addcomment = function(idea) {
+
+        return $http.post('/api/addcomment', idea)
+            .success(function(res) {
+                deferred.resolve("Success");
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
+    this.getcomments = function(idea) {
+
+        return $http.get('/api/getcomments', idea)
+            .success(function(res) {
+                deferred.resolve("Success");
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
+    this.deletecomment = function(idea) {
+
+        return $http.post('/api/getcomments', idea)
+            .success(function(res) {
+                deferred.resolve("Success");
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
 
 
 

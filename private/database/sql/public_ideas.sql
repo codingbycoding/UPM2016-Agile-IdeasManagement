@@ -39,11 +39,12 @@ CREATE TABLE `ideas` (
   `personal` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
   `draft` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
   `price` int(11) NOT NULL,
+  `votes` int(11) DEFAULT '0',
   PRIMARY KEY (`idideas`),
   UNIQUE KEY `idideas_UNIQUE` (`idideas`),
   KEY `creator_idx` (`idcreator`),
   CONSTRAINT `creator` FOREIGN KEY (`idcreator`) REFERENCES `users` (`idusers`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,7 +53,7 @@ CREATE TABLE `ideas` (
 
 LOCK TABLES `ideas` WRITE;
 /*!40000 ALTER TABLE `ideas` DISABLE KEYS */;
-INSERT INTO `ideas` VALUES (1,2,'Idea One','Description One','0','1','0','1','0','0','0','0','0',10),(2,2,'Idea Two','Description Two','0','0','1','1','0','0','0','0','0',10),(3,2,'Idea Three','Description Three','0','0','0','0','0','0','1','1','0',10),(4,3,'Idea Four','Description Four','1','1','0','0','0','0','0','0','0',10);
+INSERT INTO `ideas` VALUES (1,2,'Idea One','Description One','0','1','0','1','0','0','0','0','0',10,0),(3,2,'Idea Three','Description Three','0','0','0','0','0','0','1','0','0',10,0),(4,3,'Idea Four','Description Four','1','1','0','0','0','0','0','0','1',10,0),(5,2,'erwerwe','werwerwe','1','1','0','1','1','0','1','1','0',123123,0),(6,2,'tet','weee','0','0','0','0','1','0','0','0','0',12,0);
 /*!40000 ALTER TABLE `ideas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -65,4 +66,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-17 15:01:40
+-- Dump completed on 2016-11-25  1:11:37

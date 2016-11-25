@@ -143,7 +143,7 @@
 
     exports.getideas = function(){
          return new Promise(function (resolve, reject) {
-         client.query("SELECT public.ideas.*, public.users.name FROM public.ideas INNER JOIN public.users ON public.users.idusers=public.ideas.idcreator",
+         client.query("SELECT public.ideas.*, public.users.name FROM public.ideas INNER JOIN public.users ON public.users.idusers=public.ideas.idcreator WHERE ideas.draft='0'",
             function (err, result) {
                     if (err) {
                         reject(err);
@@ -156,7 +156,7 @@
 
     exports.insertidea = function (title,description,authorid,health,social,economic,cientific,educational,business,finance,personal,draft,price) {
         return new Promise(function (resolve, reject) {
-            client.query('INSERT INTO public.ideas SET ?', {idcreator: authorid, ideatitle: title, ideadescription: description, health: health, social: social, economic: economic, cientific: cientific, educational: educational, business: business, finance: finance, personal: personal, draft: draft, price: price},
+            client.query('INSERT INTO public.ideas SET ?', {idcreator: authorid, ideatitle: title, ideadescription: description, health: health, social: social, economic: economic, cientific: cientific, educational: educational, business: business, finance: finance, personal: personal, draft: draft, price: price, votes: 0},
                                 function (err, result) {
                                     if (err) {
                                         console.log(err);
@@ -196,6 +196,47 @@
                 });
          });
     }
+
+    exports.getcomments = function(id,idauthor){
+         return new Promise(function (resolve, reject) {
+         client.query("SELECT public.comments.*, public.users.name FROM public.comments INNER JOIN public.users ON public.users.idusers=public.comments.idauthor WHERE comments.ididea=?",[id],
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    exports.addcomment = function(id,idauthor,text){
+         return new Promise(function (resolve, reject) {
+         client.query('INSERT INTO public.comments SET ?', {idauthor: idauthor,ididea: id,text: text},
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    exports.deletecomment = function(id){
+         return new Promise(function (resolve, reject) {
+         client.query('DELETE FROM public.comments WHERE idcomments=?', [id],
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    
 
 
 }());

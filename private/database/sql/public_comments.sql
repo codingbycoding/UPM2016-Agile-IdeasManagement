@@ -18,33 +18,34 @@ USE `public`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `idusers` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `permission` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 normal\n1 admin',
-  `token` varchar(200) NOT NULL,
-  PRIMARY KEY (`idusers`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `idusers_UNIQUE` (`idusers`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+CREATE TABLE `comments` (
+  `idcomments` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(1000) DEFAULT NULL,
+  `idauthor` int(11) DEFAULT NULL,
+  `ididea` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idcomments`),
+  UNIQUE KEY `idnew_table_UNIQUE` (`idcomments`),
+  KEY `authorcomment_idx` (`idauthor`),
+  KEY `ideacomment_idx` (`ididea`),
+  CONSTRAINT `authorcomment` FOREIGN KEY (`idauthor`) REFERENCES `users` (`idusers`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `ideacomment` FOREIGN KEY (`ididea`) REFERENCES `ideas` (`idideas`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `comments`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin@agile.es','$2a$10$Iua2WqU9CtGnJRyw/OzULuhRplmWkSxGsW..u3OIKB5vq3ByIFcuO','Admin','1','5ac70c58102a4f18e0a3d0ad2a0e6a3cc0e6f817'),(2,'dev@agile.es','$2a$10$Iua2WqU9CtGnJRyw/OzULuhRplmWkSxGsW..u3OIKB5vq3ByIFcuO','Luís','0','153676591a12ca64dfd54ff78ffd2cbab2493713'),(3,'dev1@agile.es','$2a$10$Iua2WqU9CtGnJRyw/OzULuhRplmWkSxGsW..u3OIKB5vq3ByIFcuO','Pedro','0','8bfb81e89cec9c90ed21870e268aa3cc6dd228bf');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,'wwwww',2,1),(2,'tyjbrrv',2,1),(3,'trrthtyj',2,1),(4,'rergrg',2,1),(5,'qqqq',2,1);
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
