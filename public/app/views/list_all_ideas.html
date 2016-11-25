@@ -15,8 +15,53 @@
 <div class="container" style="margin-top: 30px;" ng-repeat="idea in ideas">
   
   <ul class="list-group" style="margin-top: 25px;">
-    <li class="list-group-item"> <strong>{{idea.ideatitle}}  Author:{{user.name}}</strong> <span class="badge glyphicon glyphicon-chevron-down" tabindex="0"> 0 </span>
-        <p class="alert" >{{idea.ideadescription}}</p>        
+    <li class="list-group-item"> <strong>{{idea.ideatitle}}  Author:{{user.name}}</strong> 
+       <button class="badge glyphicon glyphicon-chevron-down shownowcomments" tabindex="0"> 0 </button>
+        <p class="alert" >{{idea.ideadescription}}</p>   
+
+   <p><strong>Categories: </strong> 
+ 
+   <div ng-if="idea.health=='1'" style="display:inline-block;"> Health; </div>   
+   <div ng-if="idea.social=='1'" style="display:inline-block;"> Social; </div>
+   <div ng-if="idea.economic=='1'" style="display:inline-block;"> Economic; </div>
+   <div ng-if="idea.finance=='1'" style="display:inline-block;"> Finance; </div>
+   <div ng-if="idea.personal=='1'" style="display:inline-block;"> Personal; </div>  
+   <div ng-if="idea.business=='1'" style="display:inline-block;"> Business; </div>
+   <div ng-if="idea.cientific=='1'" style="display:inline-block;"> Cientific; </div>
+   <div ng-if="idea.educational=='1'" style="display:inline-block;"> Educational; </div>
+   
+   </p>
+   <p><strong>Price: </strong> {{idea.price}}€</p>    
+
+      <div style="display:none;" class="container showcomments">
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="page-header">
+                    <h1><small class="pull-right">45 comments</small> Comments </h1>
+                  </div> 
+
+                  <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
+                  <button type="submit" ng-click='' class="btn btn-primary btn-lg btn-block add-button">Add Comment</button>
+
+                  <br> <br>
+                   <div class="comments-list">
+                       <div class="media">
+                       <a href="#" class="pull-right glyphicon glyphicon-remove" ng-click="deletecomment(idea.idideas)" style="float:right"> Delete</a>
+                            <a class="media-left" href="#">
+                              <img src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg">
+                            </a>
+                            <div class="media-body">
+                                
+                              <h4 class="media-heading user_name">Baltej Singh</h4>
+                              Wow! this is really great.
+                              
+                            </div>
+                          </div>
+                   </div>        
+                </div>
+            </div>
+     </div>
+
     </li>
   </ul>
 </div>
@@ -24,6 +69,12 @@
 	<div class="row animation error-message text-center" ng-repeat="item in items">
 					{{item}}<a href="#" class="pull-right" ng-click="pop()"><span class="glyphicon glyphicon-remove glyphicon-white"></span></a>
 				</div>
+
+        <script type="text/javascript">
+          $('.shownowcomments').click(function() {
+             $('.showcomments').toggle(); 
+         });
+        </script>
 </body>
 </html>
 
