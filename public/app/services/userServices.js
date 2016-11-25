@@ -179,7 +179,7 @@
     };
     this.deletecomment = function(idea) {
 
-        return $http.post('/api/getcomments', idea)
+        return $http.post('/api/deletecomment', idea)
             .success(function(res) {
                 deferred.resolve("Success");
             })

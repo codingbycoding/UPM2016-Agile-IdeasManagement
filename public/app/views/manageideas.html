@@ -35,10 +35,10 @@
    <p><strong>Price: </strong> {{idea.price}}€</p>    
 
         <br>
-     <button class="list-group-item glyphicon glyphicon-comment shownowcomments"  ng-click="toggle(idea.idideas);" style="width: 175px;"> Show comments </button>
+     <button class="list-group-item glyphicon glyphicon-comment shownowcomments"  ng-click="toggle(idea.idideas);getcomments(idea.idideas)" style="width: 175px;"> Show comments </button>
      <br>
 
-   <div style="display:none;" class="container showcomments" ng-if="showDiv==idea.idideas">
+   <div class="container showcomments" ng-if="showDiv==idea.idideas">
               <div class="row">
                   <div class="col-md-8">
                     <div class="page-header">

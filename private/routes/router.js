@@ -338,7 +338,7 @@
          });
 
          server.post("/api/deletecomment",function(req,res){
-                var id = req.body.ideaid;
+                var id = req.body.id;
                 
                 database.deletecomment(id)
                     .then(function (idea) {

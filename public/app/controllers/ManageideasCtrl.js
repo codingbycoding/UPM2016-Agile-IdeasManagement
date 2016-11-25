@@ -68,10 +68,10 @@ $scope.addcomment = function(idea,com){
                     
                 });
 };
-$scope.deleteComment=function(id){
+$scope.deletecomment=function(id){
  var ll = 
                                 {
-                                    "id": ideaid
+                                    "id": id
                                 };
 if (confirm('Are you sure you want to delete this?')) {
                                 userServices.deletecomment(ll)
