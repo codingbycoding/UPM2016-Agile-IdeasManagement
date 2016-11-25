@@ -6,6 +6,7 @@ $scope.items = [];
 $scope.items1 = [];
 $scope.draft="0";
 $scope.idea1=[];
+$scope.comments=[];
          userServices.logged()
           .then(function(result) {
               console.log('User data loaded.');
@@ -16,7 +17,6 @@ $scope.idea1=[];
 			  userServices.getIdeasByAuthor(authorid)
                     .then(function (ideas) {
                         $scope.ideas = ideas.data;
-                        var i;
                     })
                     .catch(function (err) {
                          $scope.items.pop();
@@ -30,7 +30,16 @@ $scope.idea1=[];
               $scope.items.pop();
                     $scope.items.push(err.data.message);
           });
-
+$scope.getcomments = function(id){
+    userServices.getcomments(id)
+                    .then(function (ideas) {
+                        $scope.comments = ideas.data;
+                    })
+                    .catch(function (err) {
+                         $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    });
+}
 $scope.updateidea = function(){
      var ll = 
                                 {

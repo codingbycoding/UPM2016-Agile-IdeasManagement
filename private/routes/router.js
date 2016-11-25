@@ -298,9 +298,11 @@
          });
 
          server.get("/api/getcomments",function(req,res){
-             var id = req.body.id;
+             var id = req.headers.idideas;
+
             database.getcomments(id)
                 .then(function (a) {
+                    console.log(a);
                     res.status(200).send(a);
                 })
                 .catch(function (err) {

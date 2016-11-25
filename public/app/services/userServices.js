@@ -163,8 +163,12 @@
 
     };
     this.getcomments = function(idea) {
-
-        return $http.get('/api/getcomments', idea)
+        var config = {
+                headers: {
+                    'idideas': idea
+                }
+            };
+        return $http.get('/api/getcomments', config)
             .success(function(res) {
                 deferred.resolve("Success");
             })
