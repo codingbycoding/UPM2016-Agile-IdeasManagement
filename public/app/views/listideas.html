@@ -17,7 +17,7 @@
   <ul class="list-group" style="margin-top: 25px;">
     <li class="list-group-item">  <div ng-if="idea.draft=='1'" style="display:inline-block;"> [Draft] </div>
        <div ng-if="idea.draft=='0'" style="display:inline-block;"> [Submitted] </div>     <strong>{{idea.ideatitle}}</strong> 
-       <button class="badge glyphicon glyphicon-chevron-down shownowcomments" tabindex="0"> 0 </button>
+       <button class="badge glyphicon glyphicon-chevron-down shownowcomments" ng-click="showDiv = !showDiv" tabindex="0"> 0 </button>
         <p class="alert" >{{idea.ideadescription}}</p>
   
   
@@ -43,7 +43,7 @@
     <button class="list-group-item glyphicon glyphicon-remove" ng-click="deleteidea(idea)" data-toggle="modal" data-target="#myModal" style="width: 100px;"> Delete </button>
     
 
-    <div style="display:none;" class="container showcomments">
+    <div style="display:none;" class="container showcomments" ng-show="!showDiv">
             <div class="row">
                 <div class="col-md-8">
                   <div class="page-header">
@@ -164,12 +164,6 @@
 	<div class="row animation error-message text-center" ng-repeat="item in items">
 					{{item}}<a href="#" class="pull-right" ng-click="pop()"><span class="glyphicon glyphicon-remove glyphicon-white"></span></a>
 				</div>
-
-        <script type="text/javascript">
-          $('.shownowcomments').click(function() {
-             $('.showcomments').toggle(); 
-         });
-        </script>
 </body>
 </html>
 
