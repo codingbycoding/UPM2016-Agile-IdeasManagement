@@ -50,6 +50,9 @@ $scope.getcomments = function(id){
                     $scope.items.push(err.data.message);
                     });
 };
+$scope.returntomenu = function(){
+    window.location="/menu";
+};
 $scope.addcomment = function(idea,com){
     var kk = {
         "author": $scope.user.idusers,

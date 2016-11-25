@@ -57,6 +57,7 @@ $scope.addcomment = function(idea,com){
         "idideas": idea,
         "text": com
     };
+    if(confirm('Are you sure you want to create this comment? This action is irreversible')){
      userServices.addcomment(kk)
                 .then(function (res) {
                    alert("Comment Added");
@@ -67,6 +68,10 @@ $scope.addcomment = function(idea,com){
                     $scope.items.push(err.data.message);
                     
                 });
+     }
+};
+$scope.returntomenu1 = function(){
+    window.location="/menuadmin";
 };
 $scope.deletecomment=function(id){
  var ll = 

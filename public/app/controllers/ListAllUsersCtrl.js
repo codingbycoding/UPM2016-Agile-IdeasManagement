@@ -3,6 +3,9 @@
         
 	console.log('Page loaded.');
         $scope.items = [];
+        $scope.returntomenu = function(){
+    window.location="/menuadmin";
+};
         userServices.logged()
             .then(function(result) {
                 console.log('User data loaded.');

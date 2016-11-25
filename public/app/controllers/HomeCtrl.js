@@ -24,6 +24,9 @@
                 });
             
         };
+        $scope.toreturn2 = function(){
+            $window.location.href ='/home';
+        };
         $scope.register = function(user){
             if(user.password.length<5){
                 $scope.items1.pop();

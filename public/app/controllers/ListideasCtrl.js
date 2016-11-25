@@ -70,6 +70,9 @@ $scope.addcomment = function(idea,com){
                 });
     }
 };
+$scope.returntomenu = function(){
+    window.location="/menu";
+};
 $scope.updateidea = function(){
      var ll = 
                                 {

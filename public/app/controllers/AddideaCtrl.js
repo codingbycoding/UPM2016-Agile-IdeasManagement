@@ -4,6 +4,9 @@
 		 console.log('Page loaded.');
 $scope.items = [];
 $scope.draft="0";
+$scope.returntomenu = function(){
+    window.location="/menu";
+};
          	  $scope.addidea = function(idea) {
                    if(!idea.Health)
                     idea.Health='0';
