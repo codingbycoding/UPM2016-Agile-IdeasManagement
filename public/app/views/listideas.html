@@ -50,9 +50,11 @@
                     <h1><small class="pull-right"></small> Comments </h1>
                   </div> 
 
-                  <textarea class="form-control" name="addComment" id="addComment" rows="5" maxlength="250"></textarea>
-                  <button type="submit" ng-click='' class="btn btn-primary btn-lg btn-block add-button">Add Comment</button>
 
+               <form ng-submit="addcomment(idea.idideas, addcomment)" class="form-horizontal">
+                  <textarea class="form-control" name="addComment" ng-model="addcomment" id="addComment" rows="5" maxlength="250"></textarea>
+                  <button type="submit" ng-click='' class="btn btn-primary btn-lg btn-block add-button">Add Comment</button>
+               </form>
                   <br> <br>
                    <div class="comments-list" ng-repeat="comment in comments">
                        <div class="media">

@@ -16,7 +16,7 @@
   
   <ul class="list-group" style="margin-top: 25px;">
     <li class="list-group-item"> <strong>{{idea.ideatitle}}  Author:{{user.name}}</strong> 
-       <button class="badge glyphicon glyphicon-chevron-down shownowcomments" ng-click="showDiv = !showDiv" tabindex="0"> Show Comments </button>
+       <button class="badge glyphicon glyphicon-chevron-down shownowcomments" ng-click="toggle(idea.idideas);" tabindex="0"> Show Comments </button>
         <p class="alert" >{{idea.ideadescription}}</p>   
 
    <p><strong>Categories: </strong> 
@@ -33,7 +33,7 @@
    </p>
    <p><strong>Price: </strong> {{idea.price}}€</p>    
 
-      <div style="display:none;" class="container showcomments" ng-show="!showDiv">
+      <div style="display:none;" class="container showcomments" ng-if="showDiv==idea.idideas">
             <div class="row">
                 <div class="col-md-8">
                   <div class="page-header">
