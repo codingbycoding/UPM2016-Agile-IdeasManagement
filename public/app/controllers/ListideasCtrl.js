@@ -7,6 +7,7 @@ $scope.items1 = [];
 $scope.draft="0";
 $scope.idea1=[];
 $scope.comments=[];
+$scope.showDiv=false;
          userServices.logged()
           .then(function(result) {
               console.log('User data loaded.');
@@ -30,6 +31,16 @@ $scope.comments=[];
               $scope.items.pop();
                     $scope.items.push(err.data.message);
           });
+
+          $scope.toggle = function(id){
+
+              if($scope.showDiv==id){
+                  $scope.showDiv=-1;
+              }
+              else{
+                  $scope.showDiv=id;
+              }
+          };
 $scope.getcomments = function(id){
     userServices.getcomments(id)
                     .then(function (ideas) {
@@ -39,7 +50,10 @@ $scope.getcomments = function(id){
                          $scope.items.pop();
                     $scope.items.push(err.data.message);
                     });
-}
+};
+$scope.addcomment = function(com,){
+
+};
 $scope.updateidea = function(){
      var ll = 
                                 {
