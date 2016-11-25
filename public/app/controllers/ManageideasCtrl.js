@@ -3,7 +3,8 @@
 
 		 console.log('Page loaded.');
 $scope.items = [];
-        
+        $scope.comments=[];
+$scope.showDiv=false;
 			  userServices.getIdeas()
                     .then(function (ideas) {
                         $scope.ideas = ideas.data;
@@ -30,7 +31,60 @@ if (confirm('Are you sure you want to delete this?')) {
                     $scope.items.push(err.data.message);
                                     }); 
         }  
-}
+};
+          $scope.toggle = function(id){
+
+              if($scope.showDiv==id){
+                  $scope.showDiv=-1;
+              }
+              else{
+                  $scope.showDiv=id;
+              }
+          };
+$scope.getcomments = function(id){
+    userServices.getcomments(id)
+                    .then(function (ideas) {
+                        $scope.comments = ideas.data;
+                    })
+                    .catch(function (err) {
+                         $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    });
+};
+$scope.addcomment = function(idea,com){
+    var kk = {
+        "author": $scope.user.idusers,
+        "idideas": idea,
+        "text": com
+    };
+     userServices.addcomment(kk)
+                .then(function (res) {
+                   alert("Comment Added");
+                   $window.location.reload();
+                })
+                .catch(function (err) {
+                    $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    
+                });
+};
+$scope.deleteComment=function(id){
+ var ll = 
+                                {
+                                    "id": ideaid
+                                };
+if (confirm('Are you sure you want to delete this?')) {
+                                userServices.deletecomment(ll)
+                                    .then(function (result) {
+                                        alert("Comment deleted");
+                                        $window.location.reload();
+                                    })
+                                    .catch(function (err) {
+                                        $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                                    }); 
+        }  
+};
 $scope.pop = function () {
             $scope.items.pop();
         };

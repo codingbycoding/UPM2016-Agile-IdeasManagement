@@ -315,7 +315,9 @@
                 var text = req.body.text;
                 var id = req.body.idideas;
                 var authorid = req.body.author;
-                
+                console.log(text);
+                console.log(id);
+                console.log(authorid);
                 if(text==null){
                     res.status(406).json({
                             message_class: 'error',
@@ -336,7 +338,7 @@
          });
 
          server.post("/api/deletecomment",function(req,res){
-                var id = req.body.idideas;
+                var id = req.body.ideaid;
                 
                 database.deletecomment(id)
                     .then(function (idea) {

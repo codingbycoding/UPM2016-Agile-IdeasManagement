@@ -51,7 +51,7 @@ $scope.getcomments = function(id){
                     $scope.items.push(err.data.message);
                     });
 };
-$scope.addcomment = function(com,idea){
+$scope.addcomment = function(idea,com){
     var kk = {
         "author": $scope.user.idusers,
         "idideas": idea,
