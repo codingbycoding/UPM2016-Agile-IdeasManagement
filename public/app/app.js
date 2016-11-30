@@ -30,7 +30,7 @@
                         || (selectedCategory == "Finance" && ideas[i].finance =='1')
                         || (selectedCategory == "Personal" && ideas[i].personal =='1')
                         || (selectedCategory == "Business" && ideas[i].business =='1')
-                        || (selectedCategory == "Cientific" && ideas[i].cientific =='1')
+                        || (selectedCategory == "Scientific" && ideas[i].cientific =='1')
                         || (selectedCategory == "Educational" && ideas[i].educational =='1')
                         ) {
                             outIdeas.push(ideas[i]);
