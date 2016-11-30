@@ -7,7 +7,7 @@
          $scope.items1 = [];
 		 
 		$scope.permission = -1;
-	    $scope.login = function(user,remember){
+	    $scope.login = function(user,remember) {
              userServices.login(user, remember)
                 .then(function (res) {
                     $scope.items.pop();

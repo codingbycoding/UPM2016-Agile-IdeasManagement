@@ -10,6 +10,39 @@
         'ui.bootstrap'
     ]);
 
+    app.filter('filterByCategory', function() {
+ 
+        return function(ideas, selectedCategory) {   
+            var outIdeas = [];
+
+            console.log("selectedCategory:" + selectedCategory);
+            console.log("ideas:" + ideas);  
+
+            if(selectedCategory == "" || typeof selectedCategory == 'undefined') {
+                outIdeas = ideas;
+            } else {
+
+                for (var i = ideas.length - 1; i >= 0; i--) {                
+
+                    if( (selectedCategory == "Health" && ideas[i].health =='1') 
+                        || (selectedCategory == "Social" && ideas[i].social =='1')
+                        || (selectedCategory == "Economic" && ideas[i].economic =='1')
+                        || (selectedCategory == "Finance" && ideas[i].finance =='1')
+                        || (selectedCategory == "Personal" && ideas[i].personal =='1')
+                        || (selectedCategory == "Business" && ideas[i].business =='1')
+                        || (selectedCategory == "Cientific" && ideas[i].cientific =='1')
+                        || (selectedCategory == "Educational" && ideas[i].educational =='1')
+                        ) {
+                            outIdeas.push(ideas[i]);
+                        }      
+                }
+            }
+
+            return outIdeas;
+          }
+
+        });
+
     /**
      * Configure the Routes */
 
@@ -57,9 +90,9 @@
 				css: "styles/home.css"
             })
             .when("/list_all_users", {
-		templateUrl: "app/views/list_all_users.html",
+        		templateUrl: "app/views/list_all_users.html",
                 controller: "ListAllUsersCtrl",
-		css: "styles/home.css"
+	           	css: "styles/home.css"
             })
 
              

@@ -44,7 +44,12 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'wwwww',2,1),(2,'tyjbrrv',2,1),(3,'trrthtyj',2,1),(4,'rergrg',2,1),(5,'qqqq',2,1);
+INSERT INTO `comments` VALUES 
+(1,'wwwww',2,1),
+(2,'tyjbrrv',2,1),
+(3,'trrthtyj',2,1),
+(4,'rergrg',2,1),
+(5,'qqqq',2,1);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

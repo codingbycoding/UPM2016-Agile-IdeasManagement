@@ -53,7 +53,12 @@ CREATE TABLE `ideas` (
 
 LOCK TABLES `ideas` WRITE;
 /*!40000 ALTER TABLE `ideas` DISABLE KEYS */;
-INSERT INTO `ideas` VALUES (1,2,'Idea One','Description One','0','1','0','1','0','0','0','0','0',10,0),(3,2,'Idea Three','Description Three','0','0','0','0','0','0','1','0','0',10,0),(4,3,'Idea Four','Description Four','1','1','0','0','0','0','0','0','1',10,0),(5,2,'erwerwe','werwerwe','1','1','0','1','1','0','1','1','0',123123,0),(6,2,'tet','weee','0','0','0','0','1','0','0','0','0',12,0);
+INSERT INTO `ideas` VALUES 
+(1, 2, 'Idea One make robots real like human ', 'Make emotional robots like human, make the robots feel like human, make robots response like human, make robots speak like human. ', '0', '1', '0', '1', '0', '0', '0', '0', '0', 100, 0),
+(3, 2, 'Idea Three Improve money efficience.', 'If you have some free money, what would you like to do with it. Let\'s make the best use of money.','0','0','0','0','0','0','1','0','0',200,0),
+(4, 3, 'Idea Four Make human lives longer than 200 years', 'We all say, life is short, it\'s time to make life longer, here is the idea how to make your life longer than 200 years.','1','1','0','0','0','0','0','0','1',800,0),
+(5, 2, 'Idea Five Improve all resoures efficience', 'No matter you\'re a student, a teacher, an employe, yonger, older, male, or female, we consume staff everyday, we interact with each other everyday, so let\'s imporve everthing', '1','1','0','1','1','0','1','1','0',15000,0),
+(6, 2, 'How to make one million in 3 days.', 'The idea is to make money as fast as we could. We all enconter the money problem, it\'s alreay 21st, so that shouldn\'t be a problem anymore!!!', '0', '0', '0', '0', '1', '0', '0', '0', '0', 1200, 0);
 /*!40000 ALTER TABLE `ideas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

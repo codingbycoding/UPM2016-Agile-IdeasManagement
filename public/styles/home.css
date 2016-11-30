@@ -176,6 +176,15 @@
 	margin-bottom: 80px;
 }
 
+#ideatitle {
+    background-color: blue;
+}
+
+#author {
+    color:pink;    
+}
+
+
 .error-message {
     margin-bottom: 0px;
 }

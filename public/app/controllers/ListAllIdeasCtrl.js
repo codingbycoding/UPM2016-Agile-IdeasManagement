@@ -2,6 +2,21 @@
 	 var  ListAllIdeasCtrl = function($scope, $location, $routeParams, $window, userServices) {
 
 		 console.log('Page loaded.');
+$scope.categories = [
+{name:'Health'}, 
+{name:'Social'}, 
+{name:'Economic'}, 
+{name:'Finance'}, 
+{name:'Personal'}, 
+{name:'Business'}, 
+{name:'Scientific'}, 
+{name:'Educational'}
+];     
+
+$scope.myCategory = $scope.categories[2];
+
+console.log($scope.categories);
+
 $scope.items = [];
 $scope.comments=[];
 $scope.showDiv=false;
