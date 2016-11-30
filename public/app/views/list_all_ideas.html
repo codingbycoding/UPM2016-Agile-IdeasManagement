@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
 
   <link rel="stylesheet" type="text/css" href="../../styles/addIdea.css" />
 </head>
@@ -45,7 +47,22 @@
    <div ng-if="idea.educational=='1'" style="display:inline-block;"> Educational; </div>
    
    </p>
-   <p><strong>Price: </strong> {{idea.price}}€</p>    
+   <p><strong>Price: </strong> {{idea.price}}€</p>
+
+   <div class="form-group stats" style="display:inline-block;">
+    <div ng-if="checkvote(id.idideas)=='0'" style="display:inline-block;"> 
+      <button type="submit" ng-click='upvote(idea.idideas)' class="btn btn-primary btn-lg btn-block add-button" style="height:40px;width:40px;display:inline-block;">
+      <i class="fa fa-thumbs-up icon"></i></button>
+        <button type="submit" ng-click='downvote(idea.idideas)' class="btn btn-primary btn-lg btn-block add-button" style="height:40px;width:40px;display:inline-block;"><i class="fa fa-thumbs-down icon"></i> </button>
+        <p style="display:inline-block;"> <strong>Number of Votes: {{getvotes(id.idideas)}}</strong> </p>
+        </div>
+
+
+    <div ng-if="checkvote(id.idideas)=='1'" style="display:inline-block;"> 
+        <button type="submit" ng-click='deletevote(idea.idideas)' class="btn btn-primary btn-lg btn-block add-button" style="height:40px;width:150px;display:inline-block;"> <i class="fa fa-times icon"></i> Remove Vote </button>
+    </div>
+    
+    </div>    
 
       <div class="container showcomments" ng-if="showDiv==idea.idideas">
             <div class="row">
