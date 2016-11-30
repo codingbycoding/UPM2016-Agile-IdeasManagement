@@ -90,7 +90,8 @@ $scope.updateidea = function(){
                                     "draft": $scope.draft,
                                     "price": $scope.idea1.price
                                 };
-
+ if($scope.draft=="0"){
+                                    if(confirm("Your idea will be pusblished, you will not be able to edit it again")){
      userServices.updateIdea(ll)
                 .then(function (res) {
                    alert("Idea updated");
@@ -101,6 +102,21 @@ $scope.updateidea = function(){
                     $scope.items1.push(err.data.message);
                     
                 });
+ }}
+ else{
+                                    if(confirm('Your idea will be saved as "Draft", you will be able to edit it again')){
+     userServices.updateIdea(ll)
+                .then(function (res) {
+                   alert("Idea Saved");
+                   $window.location.reload();
+                })
+                .catch(function (err) {
+                    $scope.items1.pop();
+                    $scope.items1.push(err.data.message);
+                    
+                });
+ }}
+
 };
     $scope.deleteidea = function(idea) {
                    var ll = 

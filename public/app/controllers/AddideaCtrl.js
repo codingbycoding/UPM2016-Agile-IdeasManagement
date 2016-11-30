@@ -46,16 +46,32 @@ $scope.returntomenu = function(){
                                     "draft": $scope.draft,
                                     "price": idea.price
                                 };
-
-                                userServices.createIdea(ll)
-                                    .then(function (result) {
-                                        alert("Idea created");
-                                        window.location="/menu";
-                                    })
-                                    .catch(function (err) {
-                                         $scope.items.pop();
-                                        $scope.items.push(err.data.message);
-                                    });
+                                if($scope.draft=="0"){
+                                    if(confirm("Your idea will be pusblished, you will not be able to edit it again")){
+                                    userServices.createIdea(ll)
+                                        .then(function (result) {
+                                            alert("Idea created");
+                                            window.location="/menu";
+                                        })
+                                        .catch(function (err) {
+                                            $scope.items.pop();
+                                            $scope.items.push(err.data.message);
+                                        });
+                                    }
+                                }
+                                else{
+                                     if(confirm('Your idea will be saved as "Draft", you will be able to edit it again')){
+                                        userServices.createIdea(ll)
+                                            .then(function (result) {
+                                                alert("Idea Saved in draft");
+                                                window.location="/menu";
+                                            })
+                                            .catch(function (err) {
+                                                $scope.items.pop();
+                                                $scope.items.push(err.data.message);
+                                            });
+                                     }
+                                }
 
                         })
                         .catch(function(err) {
