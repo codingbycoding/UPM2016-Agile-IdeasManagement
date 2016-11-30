@@ -352,5 +352,111 @@
 
                     });
          });
+
+         server.post("/api/deletevote",function(req,res){
+                var idi = req.body.idi;
+                var idu = req.body.idu;
+                database.deletevote(idi,idu)
+                    .then(function (idea) {
+                        res.status(200).send(idea);
+                    })
+                    .catch(function (err) {
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "Error deleting vote, please try again later"
+                        });
+
+                    });
+         });
+         
+         server.get("/api/checkvote",function(req,res){////////////////TWEAK
+                var idi = req.body.idi;
+                var idu = req.body.idu;
+                database.checkvote(idi,idu)
+                    .then(function (idea) {
+                        if(idea){
+                           res.status(200).send("0");
+                        }
+                        else{
+                            res.status(200).send("1");
+                        }
+                        
+                    })
+                    .catch(function (err) {
+                        console.log("ssssssssssssssssssssss");
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "Error checking votes, please try again later"
+                        });
+
+                    });
+         });
+
+         server.get("/api/getvotes",function(req,res){
+                var id = req.headers.idideas;
+                
+                database.getvotes(id)
+                    .then(function (idea) {
+                        res.status(200).send(idea);
+                    })
+                    .catch(function (err) {
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "Error checking votes, please try again later"
+                        });
+
+                    });
+         });
+         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+         server.post("/api/upvote",function(req,res){
+                var idi = req.body.idi;
+                var idu = req.body.idu;
+                database.upvote(idi)
+                    .then(function (idea) {
+                        database.insertvote(idi,idu)
+                            .then(function (idea) {
+                                res.status(200).send(idea);
+                            })
+                            .catch(function (err) {
+                                res.status(406).json({
+                                    message_class: 'error',
+                                    message: "Error upvoting idea, please try again later"
+                                });
+
+                            });
+                    })
+                    .catch(function (err) {
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "Error upvoting idea, please try again later"
+                        });
+
+                    });
+         });
+         server.post("/api/downvote",function(req,res){
+                var idi = req.body.idi;
+                var idu = req.body.idu;
+                database.downvote(idi)
+                    .then(function (idea) {
+                        database.insertvote(idi,idu)
+                            .then(function (idea) {
+                                res.status(200).send(idea);
+                            })
+                            .catch(function (err) {
+                                res.status(406).json({
+                                    message_class: 'error',
+                                    message: "Error downvoting idea, please try again later"
+                                });
+
+                            });
+                    })
+                    .catch(function (err) {
+                        res.status(406).json({
+                            message_class: 'error',
+                            message: "Error downvoting idea, please try again later"
+                        });
+
+                    });
+         });
     };
 } ());

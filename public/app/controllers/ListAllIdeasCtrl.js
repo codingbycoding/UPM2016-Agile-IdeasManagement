@@ -65,6 +65,84 @@ $scope.getcomments = function(id){
                     $scope.items.push(err.data.message);
                     });
 };
+$scope.upvote = function(id){
+    var ll={
+        "idi": id,
+        "idu": $scope.userid
+    };
+     userServices.upvote(ll)
+                    .then(function (ideas) {
+                        alert('Idea upvoted');
+                       window.location="/list_all_ideas";
+                    })
+                    .catch(function (err) {
+                         $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    });
+};
+
+$scope.downvote = function(id){
+    var ll={
+        "idi": id,
+        "idu": $scope.userid
+    };
+     userServices.downvote(ll)
+                    .then(function (ideas) {
+                        alert('Idea downvoted');
+                       window.location="/list_all_ideas";
+                    })
+                    .catch(function (err) {
+                         $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    });
+};
+
+$scope.getvotes = function(id){
+     return JSON.stringify(userServices.getvotes(id)
+                    .then(function (ideas) {
+                        return ideas.data;
+                    })
+                    .catch(function (err) {
+                         $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    }).$$state.status);
+};
+
+$scope.checkvote = function(id){
+    var ll={
+        "idi": id,
+        "idu": $scope.userid
+    };
+    var x="a";
+     return JSON.stringify(userServices.checkvote(ll)
+     
+                    .then(function (ideas) {
+                        alert(ideas.data);
+                        x= ideas.data;
+                    })
+                    .catch(function (err) {
+                         $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    }).$$state.status);
+                    
+};
+
+$scope.deletevote = function(id){
+    var ll={
+        "idi": id,
+        "idu": $scope.userid
+    };
+     userServices.deletevote(ll)
+                    .then(function (ideas) {
+                         alert('Vote deleted');
+                       window.location="/list_all_ideas";
+                    })
+                    .catch(function (err) {
+                         $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                    });
+};
+
 $scope.returntomenu = function(){
     window.location="/menu";
 };
@@ -87,7 +165,7 @@ $scope.addcomment = function(idea,com){
                 });
     }
 };
-     
+ 
 $scope.pop = function () {
             $scope.items.pop();
         };

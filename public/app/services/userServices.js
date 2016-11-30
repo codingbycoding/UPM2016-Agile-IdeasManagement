@@ -188,6 +188,62 @@
             });
 
     };
+    this.deletevote = function(idea) {
+        return $http.post('/api/deletevote', idea)
+            .success(function(res) {
+                deferred.resolve("Success");
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
+    this.checkvote = function(idea) {
+        return $http.get('/api/checkvote', idea)
+            .success(function(res) {
+                deferred.resolve(res);
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
+    this.getvotes = function(idea) {
+        var config = {
+                headers: {
+                    'idideas': idea
+                }
+            };
+        return $http.get('/api/getvotes', config)
+            .success(function(res) {
+                deferred.resolve("Success");
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
+    this.upvote = function(idea) {
+        return $http.post('/api/upvote', idea)
+            .success(function(res) {
+                deferred.resolve("Success");
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
+    this.downvote = function(idea) {
+        return $http.post('/api/downvote', idea)
+            .success(function(res) {
+                deferred.resolve("Success");
+            })
+            .error(function(err) {
+                deferred.reject(err);
+            });
+
+    };
+    
 
 
 

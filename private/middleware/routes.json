@@ -18,7 +18,13 @@
 			"/api/deleteidea",
 			"/api/updateidea",
 			"/api/addcomment",
-			"/api/getcomments"
+			"/api/getcomments",
+			
+			"/api/downvote",
+			"/api/upvote",
+			"/api/getvotes",
+			"/api/checkvote",
+			"/api/deletevote"
 
 		],
 

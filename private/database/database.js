@@ -236,6 +236,84 @@
          });
     }
 
+    exports.deletevote = function(idi,idu){
+         return new Promise(function (resolve, reject) {
+         client.query('DELETE FROM public.votes WHERE user=? and idea=?', [idu,idi],
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    exports.checkvote = function(idi,idu){
+         return new Promise(function (resolve, reject) {
+         client.query('SELECT * FROM public.votes WHERE user=? and idea=?', [idu,idi],
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    exports.getvotes = function(idi){
+         return new Promise(function (resolve, reject) {
+         client.query('SELECT votes FROM public.ideas WHERE idideas=?', [idi],
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    exports.upvote = function(idi){
+         return new Promise(function (resolve, reject) {
+         client.query('UPDATE public.ideas SET votes=votes+1 WHERE idideas=?', [idi],
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    exports.downvote = function(idi){
+         return new Promise(function (resolve, reject) {
+         client.query('UPDATE public.ideas SET votes=votes-1 WHERE idideas=?', [idi],
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    exports.insertvote = function(idi){
+         return new Promise(function (resolve, reject) {
+         client.query('INSERT INTO public.votes SET ?', {user: idu, idea: idi},
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
     
 
 
