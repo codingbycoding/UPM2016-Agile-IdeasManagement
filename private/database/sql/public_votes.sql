@@ -28,6 +28,7 @@ CREATE TABLE `votes` (
   `idvotes` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) DEFAULT NULL,
   `idea` int(11) DEFAULT NULL,
+  `up` int(11) DEFAULT NULL,      
   PRIMARY KEY (`idvotes`),
   UNIQUE KEY `idvotes_UNIQUE` (`idvotes`),
   KEY `uservotes_idx` (`user`),

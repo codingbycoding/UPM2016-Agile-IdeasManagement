@@ -87,7 +87,6 @@ $scope.upvote = function(id,x){
         "idi": id,
         "idu": $scope.userid
     };
-    alert(x);
      userServices.upvote(ll)
                     .then(function (ideas) {
                         alert('Idea upvoted');
