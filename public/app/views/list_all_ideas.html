@@ -50,6 +50,7 @@
    <p><strong>Price: </strong> {{idea.price}}€</p>
 
    <div class="form-group stats" style="display:inline-block;" >
+     <div ng-if="idea.idcreator!=userid">
     <div   ng-if="idea.votesc=='0'" style="display:inline-block;"> 
       <button type="button" ng-click='upvote(idea.idideas,idea.votesc);' class="btn btn-primary btn-lg btn-block add-button" style="height:40px;width:40px;display:inline-block;">
       <i class="fa fa-thumbs-up icon"></i></button>
@@ -62,7 +63,7 @@
         <button type="button" ng-click='deletevote(idea.idideas)' class="btn btn-primary btn-lg btn-block add-button" style="height:40px;width:150px;display:inline-block;"> <i class="fa fa-times icon"></i> Remove Vote </button>
     <p style="display:inline-block;"> <strong>Number of Votes: {{idea.votes}}</strong> </p>
     </div>
-    
+     </div>
     </div>    
 
       <div class="container showcomments" ng-if="showDiv==idea.idideas">
