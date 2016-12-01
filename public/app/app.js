@@ -10,6 +10,41 @@
         'ui.bootstrap'
     ]);
 
+    app.filter('searchAllIdeasFor', function(){
+        return function(arr, searchString){
+            if (!searchString) {
+                return arr;
+            }
+            var result = [];
+            searchString = searchString.toLowerCase();
+            angular.forEach(arr, function(item) {
+                if (item.ideatitle.toLowerCase().indexOf(searchString) !== -1
+                    || item.ideadescription.toLowerCase().indexOf(searchString) !== -1
+                    || item.name.toLowerCase().indexOf(searchString) !== -1) {
+                    result.push(item);
+                }
+            });
+            return result;
+        };
+    });
+
+    app.filter('searchMyIdeasFor', function(){
+        return function(arr, searchString){
+            if (!searchString) {
+                return arr;
+            }
+            var result = [];
+            searchString = searchString.toLowerCase();
+            angular.forEach(arr, function(item) {
+                if (item.ideatitle.toLowerCase().indexOf(searchString) !== -1
+                    || item.ideadescription.toLowerCase().indexOf(searchString) !== -1) {
+                    result.push(item);
+                }
+            });
+            return result;
+        };
+    });
+
     app.filter('filterByCategory', function() {
  
         return function(ideas, selectedCategory) {   

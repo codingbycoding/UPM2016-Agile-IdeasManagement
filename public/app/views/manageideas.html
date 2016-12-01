@@ -1,76 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>AllIdeas</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <head>
+    <title>AllIdeas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="../../styles/addIdea.css" />
-</head>
-<body>
-  <br>
-	<a href="#"  style="margin-left:25px;"ng-click="returntomenu1()"><span class="glyphicon glyphicon-chevron-left glyphicon-white">Back</span></a>
-<h1 class="title">List Of All Ideas</h1>
-<div class="container" style="margin-top: 30px;" ng-repeat="idea in ideas">
-  
-  <ul class="list-group" style="margin-top: 25px;">
-    <li class="list-group-item glyphicon glyphicon-user"> <strong>{{idea.name}}</strong>  <u>{{idea.ideatitle}}</u>
-     <a href="#" class="pull-right glyphicon glyphicon-remove" ng-click="deleteidea(idea.idideas)" style="float:right">Delete Idea</a>
-     <p class="alert" >{{idea.ideadescription}}</p>
+    <link rel="stylesheet" type="text/css" href="../../styles/addIdea.css" />
+  </head>
+  <body>
+    <br>
+    <a href="#"  style="margin-left:25px;"ng-click="returntomenu1()"><span class="glyphicon glyphicon-chevron-left glyphicon-white">Back</span></a>
+    <h1 class="title">List Of All Ideas</h1>
+    <div>
+      <div style="margin-left: 270px; display: inline;">
+        <label>Ideas grouped by Category: 
+          <select ng-model="selectedCategory" ng-options="category.name for category in categories" ng-change="onFilterByCategory()">
+            <option value="">-- Choose Category --</option>       
+          </select>
+        </label>
+      </div>
+      
+      <div class="bar" style="float: right; margin-right: 270px; display: inline; ">    
+        <label>Search: 
+          <input type="text" class="search" ng-model="searchString" placeholder="Enter your search terms" />
+        </label><br/>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top: 30px;" ng-repeat="idea in ideas | filterByCategory: selectedCategory.name | searchAllIdeasFor:searchString">
+      
+      <ul class="list-group" style="margin-top: 25px;">
+        <li class="list-group-item glyphicon glyphicon-user"> <strong>{{idea.name}}</strong>  <u>{{idea.ideatitle}}</u>
+          <a href="#" class="pull-right glyphicon glyphicon-remove" ng-click="deleteidea(idea.idideas)" style="float:right">Delete Idea</a>
+          <p class="alert" >{{idea.ideadescription}}</p>
 
 
-   <p><strong>Categories: </strong> 
- 
-   <div ng-if="idea.health=='1'" style="display:inline-block;"> Health; </div>   
-   <div ng-if="idea.social=='1'" style="display:inline-block;"> Social; </div>
-   <div ng-if="idea.economic=='1'" style="display:inline-block;"> Economic; </div>
-   <div ng-if="idea.finance=='1'" style="display:inline-block;"> Finance; </div>
-   <div ng-if="idea.personal=='1'" style="display:inline-block;"> Personal; </div>  
-   <div ng-if="idea.business=='1'" style="display:inline-block;"> Business; </div>
-   <div ng-if="idea.cientific=='1'" style="display:inline-block;"> Scientific; </div>
-   <div ng-if="idea.educational=='1'" style="display:inline-block;"> Educational; </div>
-   
-   </p>
-   <p><strong>Price: </strong> {{idea.price}}€</p>    
+          <p><strong>Categories: </strong> 
+            
+            <div ng-if="idea.health=='1'" style="display:inline-block;"> Health; </div>   
+            <div ng-if="idea.social=='1'" style="display:inline-block;"> Social; </div>
+            <div ng-if="idea.economic=='1'" style="display:inline-block;"> Economic; </div>
+            <div ng-if="idea.finance=='1'" style="display:inline-block;"> Finance; </div>
+            <div ng-if="idea.personal=='1'" style="display:inline-block;"> Personal; </div>  
+            <div ng-if="idea.business=='1'" style="display:inline-block;"> Business; </div>
+            <div ng-if="idea.cientific=='1'" style="display:inline-block;"> Scientific; </div>
+            <div ng-if="idea.educational=='1'" style="display:inline-block;"> Educational; </div>
+            
+          </p>
+          <p><strong>Price: </strong> {{idea.price}}€</p>    
 
-        <br>
-     <button class="list-group-item glyphicon glyphicon-comment shownowcomments"  ng-click="toggle(idea.idideas);getcomments(idea.idideas)" style="width: 175px;"> Show comments </button>
-     <br>
+          <br>
+          <button class="list-group-item glyphicon glyphicon-comment shownowcomments"  ng-click="toggle(idea.idideas);getcomments(idea.idideas)" style="width: 175px;"> Show comments </button>
+          <br>
 
-   <div class="container showcomments" ng-if="showDiv==idea.idideas">
-              <div class="row">
-                  <div class="col-md-8">
-                    <div class="page-header">
-                      <h1><small class="pull-right"></small> Comments </h1>
-                    </div> 
+          <div class="container showcomments" ng-if="showDiv==idea.idideas">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="page-header">
+                  <h1><small class="pull-right"></small> Comments </h1>
+                </div> 
 
-                     <div class="comments-list" ng-repeat="comment in comments">
-                         <div class="media">
-                             <a href="#" class="pull-right glyphicon glyphicon-remove" ng-click="deletecomment(comment.idcomments)" style="float:right"> Delete Comment</a>
-                              <a class="media-left" href="#">
-                                <img src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg">
-                              </a>
-                              <div class="media-body">
-                                  
-                                <h4 class="media-heading user_name">{{comment.name}}</h4>
-                                {{comment.text}}
-                                
-                              </div>
-                            </div>
-                     </div>        
+                <div class="comments-list" ng-repeat="comment in comments">
+                  <div class="media">
+                    <a href="#" class="pull-right glyphicon glyphicon-remove" ng-click="deletecomment(comment.idcomments)" style="float:right"> Delete Comment</a>
+                    <a class="media-left" href="#">
+                      <img src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg">
+                    </a>
+                    <div class="media-body">
+                      
+                      <h4 class="media-heading user_name">{{comment.name}}</h4>
+                      {{comment.text}}
+                      
+                    </div>
                   </div>
+                </div>        
               </div>
-       </div>   
+            </div>
+          </div>   
 
-    </li>
-  </ul>
-</div>
-	<div class="row animation error-message text-center" ng-repeat="item in items">
-					{{item}}<a href="#" class="pull-right" ng-click="pop()"><span class="glyphicon glyphicon-remove glyphicon-white"></span></a>
-				</div>
+        </li>
+      </ul>
+    </div>
+    <div class="row animation error-message text-center" ng-repeat="item in items">
+      {{item}}<a href="#" class="pull-right" ng-click="pop()"><span class="glyphicon glyphicon-remove glyphicon-white"></span></a>
+    </div>
 
-</body>
+  </body>
 </html>
