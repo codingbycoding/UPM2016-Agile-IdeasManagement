@@ -150,6 +150,11 @@
                 controller: "ListAllUsersCtrl",
 	           	css: "styles/home.css"
             })
+            .when("/forbidden", {
+        		templateUrl: "app/views/forbidden.html",
+                controller: "HomeCtrl",
+	           	css: "styles/home.css"
+            })
 
              
             .otherwise({
