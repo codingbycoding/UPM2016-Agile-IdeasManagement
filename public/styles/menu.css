@@ -14,15 +14,16 @@
     background-color: #B0C4DE; /*#F7F7F7;*/    
      
     }
-.title h2
+ 
+#homeTitle h2
 {
     color: #333333;    
 	font-family: HelveticaFreeBold,Century Gothic, sans-serif;
-	font-size: 4vw;	
+	font-size: 3vw;	
 	font-weight:normal ;
-	text-align: center;
+	text-align: center;	
 	margin-top: 5px;
-	height:80px;
+	height:70px;
     background-color: #B0C4DE;
 }
 .card-container.card {
