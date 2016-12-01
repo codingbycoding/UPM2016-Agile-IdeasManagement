@@ -64,7 +64,13 @@
     <p style="display:inline-block;"> <strong>Number of Votes: {{idea.votes}}</strong> </p>
     </div>
      </div>
-    </div>    
+    </div> 
+
+    <div ng-if="idea.price=='0'" style="display:inline-block;">
+     <div class="form-group">
+      <button type="submit" ng-click='deleteidea(idea.idideas)' class="btn btn-primary btn-lg btn-block add-button" style="height:40px;width:150px;"><i class="fa fa-shopping-cart icon"></i> Buy this idea</button>
+    </div>   
+    </div>
 
       <div class="container showcomments" ng-if="showDiv==idea.idideas">
             <div class="row">
