@@ -5,6 +5,25 @@
  * General styles
  */
 
+.container
+{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    margin-bottom:5px;
+    background-color: #B0C4DE; /*#F7F7F7;*/    
+     
+    }
+.title
+{
+    color: #333333;    
+	font-family: 'Century Gothic', sans-serif,HelveticaFreeBold;
+	font-size: 4vw;	
+	font-weight: bold;
+	text-align: center;
+	margin-top: 20px;
+    background-color: #B0C4DE;
+}
 .card-container.card {
     max-width: 350px;
     padding: 40px 40px;
@@ -24,7 +43,7 @@
  * Card component
  */
 .card {
-    background-color: #F7F7F7;
+    background-color: #B0C4DE;
     /* just in case there no content*/
     padding: 20px 25px 30px 30px;
     margin: 0 auto 25px;
@@ -35,7 +54,7 @@
     border-radius: 2px;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0);
 }
 
 .profile-img-card {
@@ -54,6 +73,7 @@
 .profile-name-card {
     font-size: 16px;
     font-weight: bold;
+    
     text-align: center;
     margin: 10px 0 0;
     min-height: 1em;
@@ -125,8 +145,8 @@
 #homeTitle {
 	color: #333333;
 	font-family: HelveticaFreeBold,Century Gothic, sans-serif;
-	font-size: 4vw;
-	color: white;
+	font-size: 4vw;	
+	color: #B0C4DE; /*color: white;*/
 	font-weight: bold;
 	text-align: center;
 	margin-top: 30px;
@@ -175,15 +195,6 @@
 #toolbox .col-lg-4  {
 	margin-bottom: 80px;
 }
-
-#ideatitle {
-    background-color: blue;
-}
-
-#author {
-    color:pink;    
-}
-
 
 .error-message {
     margin-bottom: 0px;
