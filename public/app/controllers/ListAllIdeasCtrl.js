@@ -66,6 +66,23 @@ $scope.getcomments = function(id){
                     $scope.items.push(err.data.message);
                     });
 };
+ $scope.deleteidea = function(ideaid) {
+                   var ll = 
+                                {
+                                    "id": ideaid
+                                };
+if (confirm('Are you want to buy this idea?')) {
+                                userServices.deleteIdea(ll)
+                                    .then(function (result) {
+                                        alert("Idea bought");
+                                        $window.location.reload();
+                                    })
+                                    .catch(function (err) {
+                                        $scope.items.pop();
+                    $scope.items.push(err.data.message);
+                                    }); 
+        }  
+};
 $scope.upvote = function(id,x){
     var ll={
         "idi": id,
