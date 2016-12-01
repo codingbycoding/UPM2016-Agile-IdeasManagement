@@ -1,0 +1,104 @@
+/*
+ * Specific styles of signin component
+ */
+/*
+ * General styles
+ */
+
+.container
+{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    margin-bottom:5px;
+    background-color: #B0C4DE; /*#F7F7F7;*/    
+     
+    }
+ #out
+ {
+     
+ }
+#homeTitle h2
+{
+    color: #333333;    
+	font-family: HelveticaFreeBold,Century Gothic, sans-serif;
+	font-size: 3vw;	
+	font-weight:normal ;
+	text-align: center;	
+	margin-top: 5px;
+	height:70px;
+    background-color: #B0C4DE;
+}
+.card-container.card {
+    max-width: 350px;
+    padding: 40px 40px;
+	margin-top:auto;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+
+
+
+@media(max-width:770px) {
+	#homeTitle {
+		font-size: 30px;
+	}
+}
+
+#toolbox {
+	margin-top: 8vw;
+	-webkit-user-select: none; /* Chrome/Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	
+}
+
+#toolbox  a {
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	text-decoration: none;
+	font-size: 25px;
+	
+}
+#push
+{
+    margin-left:260px;
+    margin-top: 5%;
+}
+
+#toolbox a:hover, #toolbox .fa:hover , #toolbox a:hover .fa {
+	color: #FFC65E;
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+}
+
+#toolbox .fa {
+	margin-bottom: 10px;
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	font-size: 13vw;
+	
+}
+@media(min-width:320px) {
+	#toolbox .fa {
+		font-size: 70px;
+	}
+}
+
+#toolbox .col-lg-4  {
+	margin-bottom: 80px;
+}
+
+.error-message {
+    margin-bottom: 0px;
+}
