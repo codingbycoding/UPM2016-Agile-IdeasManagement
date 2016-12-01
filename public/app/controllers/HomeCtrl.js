@@ -23,7 +23,11 @@
                     
                 });
             
-        };
+            };
+             $scope.returntologin = function(){
+                 window.location="/";
+             };
+
         $scope.toreturn2 = function(){
             $window.location.href ='/home';
         };
