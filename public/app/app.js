@@ -77,6 +77,27 @@
           }
 
         });
+         app.filter('filterByUser', function() {
+ 
+        return function(ideas, selectedUser) {   
+            var outIdeas = [];
+            console.log("selectedUser:" + selectedUser);
+            if(selectedUser == null || typeof selectedUser == 'undefined') {
+                outIdeas = ideas;
+            } else {
+
+                for (var i = ideas.length - 1; i >= 0; i--) {                
+
+                    if(selectedUser.name==ideas[i].name) {
+                            outIdeas.push(ideas[i]);
+                        }      
+                }
+            }
+
+            return outIdeas;
+          }
+
+        });
 
     /**
      * Configure the Routes */

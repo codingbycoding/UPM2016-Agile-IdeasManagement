@@ -129,7 +129,7 @@
 
         exports.get_all_ideas = function(iduser){
          return new Promise(function (resolve, reject) {
-         client.query("SELECT public.ideas.*, public.users.name FROM public.ideas INNER JOIN public.users ON public.users.idusers=public.ideas.idcreator",
+         client.query("SELECT public.ideas.*, public.users.name FROM public.ideas INNER JOIN public.users ON public.users.idusers=public.ideas.idcreator WHERE ideas.draft='0'",
             function (err, result) {
                     if (err) {
                         reject(err);

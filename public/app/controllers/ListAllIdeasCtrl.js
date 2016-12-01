@@ -15,7 +15,7 @@
     ];     
 
     $scope.myCategory = $scope.categories[2];
-    
+    $scope.users = [];
 $scope.items = [];
 $scope.comments=[];
 $scope.userid;
@@ -30,6 +30,16 @@ $scope.showDiv=false;
 			  userServices.getAllIdeas(authorid)
                     .then(function (ideas) {
                         $scope.ideas = ideas.data;
+                        for(var i=0;i<ideas.data.length;i++){
+                            var y=0;
+                            for(var x=0;x<$scope.users.length;x++){
+                                if($scope.users[x].name==ideas.data[i].name)
+                                    y=1;
+                            }
+                            if(y==0){
+                                $scope.users.push({'name': ideas.data[i].name});
+                            }
+                        }
                         console.log($scope.ideas);
                         var i;
                     })

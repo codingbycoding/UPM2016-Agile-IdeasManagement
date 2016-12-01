@@ -29,9 +29,16 @@
           <input type="text" class="search" ng-model="searchString" placeholder="Enter your search terms" />
         </label><br/>
       </div>
+      <div style="margin-left: 270px;">
+    <label>Ideas grouped by User: 
+      <select ng-model="selectedUser" ng-options="user.name for user in users" ng-change="onFilterByUser()">
+        <option value="">-- Choose User --</option>       
+      </select>
+    </label>
+  </div>
     </div>
 
-    <div class="container" style="margin-top: 30px;" ng-repeat="idea in ideas | filterByCategory: selectedCategory.name | searchAllIdeasFor:searchString">
+    <div class="container" style="margin-top: 30px;" ng-repeat="idea in ideas | filterByCategory: selectedCategory.name | filterByUser: selectedUser | searchAllIdeasFor:searchString">
       
       <ul class="list-group" style="margin-top: 25px;">
         <li class="list-group-item glyphicon glyphicon-user"> <strong>{{idea.name}}</strong>  <u>{{idea.ideatitle}}</u>
