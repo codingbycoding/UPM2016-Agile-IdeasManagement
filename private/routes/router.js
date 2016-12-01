@@ -161,7 +161,6 @@
                     res.status(200).send(ll);
                 })
                 .catch(function (err) {
-                    console.log(err);
                     res.status(406).send('Error retrieving ideas from the database, please try again later');
                 });
         });
@@ -185,7 +184,6 @@
                     res.status(200).send(a);
                 })
                 .catch(function (err) {
-                    console.log(err);
                     res.status(406).send('Error retrieving ideas from the database, please try again later');
                 });
         });
@@ -197,7 +195,6 @@
                 res.status(200).send(a);
             })
             .catch(function (err) {
-                console.log(err);
                 res.status(406).send('Error retrieving ideas from the database, please try again later');
             });
         });         
@@ -209,7 +206,6 @@
                     res.status(200).send(a);
                 })
                 .catch(function (err) {
-                    console.log(err);
                     res.status(406).send('Error retrieving users from the database, please try again later');
                 });
         });         
@@ -302,11 +298,9 @@
 
             database.getcomments(id)
                 .then(function (a) {
-                    console.log(a);
                     res.status(200).send(a);
                 })
                 .catch(function (err) {
-                    console.log(err);
                     res.status(406).send('Error retrieving comments from the database, please try again later');
                 });
         });
@@ -315,9 +309,6 @@
                 var text = req.body.text;
                 var id = req.body.idideas;
                 var authorid = req.body.author;
-                console.log(text);
-                console.log(id);
-                console.log(authorid);
                 if(text==null){
                     res.status(406).json({
                             message_class: 'error',
@@ -339,7 +330,6 @@
 
          server.post("/api/deletecomment",function(req,res){
                 var id = req.body.id;
-                
                 database.deletecomment(id)
                     .then(function (idea) {
                         res.status(200).send(idea);
@@ -356,9 +346,19 @@
          server.post("/api/deletevote",function(req,res){
                 var idi = req.body.idi;
                 var idu = req.body.idu;
-                database.deletevote(idi,idu)
+                database.decreasevote(idi,idu)
                     .then(function (idea) {
-                        res.status(200).send(idea);
+                        database.deletevote(idi,idu)
+                            .then(function (idea) {
+                                res.status(200).send(idea);
+                            })
+                            .catch(function (err) {
+                                res.status(406).json({
+                                    message_class: 'error',
+                                    message: "Error deleting vote, please try again later"
+                                });
+
+                            });
                     })
                     .catch(function (err) {
                         res.status(406).json({
@@ -370,11 +370,11 @@
          });
          
          server.get("/api/checkvote",function(req,res){////////////////TWEAK
-                var idi = req.body.idi;
-                var idu = req.body.idu;
+                var idi = req.headers.idi;
+                var idu = req.headers.idu;
                 database.checkvote(idi,idu)
                     .then(function (idea) {
-                        if(idea){
+                        if(idea.length==0){
                            res.status(200).send("0");
                         }
                         else{
@@ -383,7 +383,6 @@
                         
                     })
                     .catch(function (err) {
-                        console.log("ssssssssssssssssssssss");
                         res.status(406).json({
                             message_class: 'error',
                             message: "Error checking votes, please try again later"
@@ -413,7 +412,7 @@
                 var idu = req.body.idu;
                 database.upvote(idi)
                     .then(function (idea) {
-                        database.insertvote(idi,idu)
+                        database.insertvote(idi,idu,1)
                             .then(function (idea) {
                                 res.status(200).send(idea);
                             })
@@ -438,7 +437,7 @@
                 var idu = req.body.idu;
                 database.downvote(idi)
                     .then(function (idea) {
-                        database.insertvote(idi,idu)
+                        database.insertvote(idi,idu,0)
                             .then(function (idea) {
                                 res.status(200).send(idea);
                             })

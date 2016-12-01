@@ -32,7 +32,7 @@ CREATE TABLE `ideas` (
   `health` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
   `social` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
   `economic` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
-  `scientific` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
+  `cientific` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
   `educational` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
   `business` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',
   `finance` varchar(45) NOT NULL DEFAULT '0' COMMENT '0 false\n1 true',

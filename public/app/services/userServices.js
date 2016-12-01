@@ -189,6 +189,7 @@
 
     };
     this.deletevote = function(idea) {
+        
         return $http.post('/api/deletevote', idea)
             .success(function(res) {
                 deferred.resolve("Success");
@@ -199,7 +200,13 @@
 
     };
     this.checkvote = function(idea) {
-        return $http.get('/api/checkvote', idea)
+         var config = {
+                headers: {
+                    'idi': idea.idi,
+                    'idu': idea.idu
+                }
+            };
+        return $http.get('/api/checkvote', config)
             .success(function(res) {
                 deferred.resolve(res);
             })

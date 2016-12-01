@@ -119,7 +119,6 @@
          client.query("SELECT * FROM public.ideas WHERE idcreator=?",[iduser],
             function (err, result) {
                     if (err) {
-                        console.log(err);
                         reject(err);
                     } else {
                         resolve(result);
@@ -159,7 +158,6 @@
             client.query('INSERT INTO public.ideas SET ?', {idcreator: authorid, ideatitle: title, ideadescription: description, health: health, social: social, economic: economic, cientific: cientific, educational: educational, business: business, finance: finance, personal: personal, draft: draft, price: price, votes: 0},
                                 function (err, result) {
                                     if (err) {
-                                        console.log(err);
                                         reject(err);
                                     } else {
                                         resolve(result);
@@ -188,7 +186,6 @@
          client.query('UPDATE public.ideas SET ideatitle=?, ideadescription=?, health=?,social=?,economic=?,cientific=?,educational=?,business=?,finance=?,personal=?,draft=?,price=?  WHERE idideas = ?', [title,description,health,social,economic,cientific,educational,business,finance,personal,draft,price,id],
             function (err, result) {
                     if (err) {
-                        console.log(err);
                         reject(err);
                     } else {
                         resolve(result);
@@ -251,7 +248,8 @@
 
     exports.checkvote = function(idi,idu){
          return new Promise(function (resolve, reject) {
-         client.query('SELECT * FROM public.votes WHERE user=? and idea=?', [idu,idi],
+             
+         client.query('SELECT idvotes FROM public.votes WHERE user='+idu+' AND idea='+idi,
             function (err, result) {
                     if (err) {
                         reject(err);
@@ -301,13 +299,44 @@
          });
     }
 
-    exports.insertvote = function(idi){
+    exports.insertvote = function(idi,idu,x){
          return new Promise(function (resolve, reject) {
-         client.query('INSERT INTO public.votes SET ?', {user: idu, idea: idi},
+         client.query('INSERT INTO public.votes SET ?', {user: idu, idea: idi,up:x},
             function (err, result) {
                     if (err) {
                         reject(err);
                     } else {
+                        resolve(result);
+                    }
+                });
+         });
+    }
+
+    exports.decreasevote = function(idi,idu){
+         return new Promise(function (resolve, reject) {
+         client.query('SELECT up FROM public.votes WHERE user='+idu+' AND idea='+idi,
+            function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        if(result[0].up==0)
+                            client.query('UPDATE public.ideas SET votes=votes+1 WHERE idideas=?', [idi],
+                                function (err, result) {
+                                        if (err) {
+                                            reject(err);
+                                        } else {
+                                            resolve(result);
+                                        }
+                                    });
+                        else
+                             client.query('UPDATE public.ideas SET votes=votes-1 WHERE idideas=?', [idi],
+                                function (err, result) {
+                                        if (err) {
+                                            reject(err);
+                                        } else {
+                                            resolve(result);
+                                        }
+                                    });
                         resolve(result);
                     }
                 });

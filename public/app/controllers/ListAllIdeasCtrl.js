@@ -19,6 +19,7 @@ console.log($scope.categories);
 
 $scope.items = [];
 $scope.comments=[];
+$scope.userid;
 $scope.showDiv=false;
          userServices.logged()
           .then(function(result) {
@@ -65,11 +66,12 @@ $scope.getcomments = function(id){
                     $scope.items.push(err.data.message);
                     });
 };
-$scope.upvote = function(id){
+$scope.upvote = function(id,x){
     var ll={
         "idi": id,
         "idu": $scope.userid
     };
+    alert(x);
      userServices.upvote(ll)
                     .then(function (ideas) {
                         alert('Idea upvoted');
@@ -98,37 +100,38 @@ $scope.downvote = function(id){
 };
 
 $scope.getvotes = function(id){
-     return JSON.stringify(userServices.getvotes(id)
+     return userServices.getvotes(id)
                     .then(function (ideas) {
                         return ideas.data;
                     })
                     .catch(function (err) {
                          $scope.items.pop();
                     $scope.items.push(err.data.message);
-                    }).$$state.status);
+                    }).$$state.status;
 };
 
 $scope.checkvote = function(id){
     var ll={
-        "idi": id,
+        "idi": id.idideas,
         "idu": $scope.userid
     };
     var x="a";
-     return JSON.stringify(userServices.checkvote(ll)
+    id.votesc={};
+     userServices.checkvote(ll)
      
                     .then(function (ideas) {
-                        alert(ideas.data);
-                        x= ideas.data;
+                        id.votesc= ideas.data;
                     })
                     .catch(function (err) {
                          $scope.items.pop();
                     $scope.items.push(err.data.message);
-                    }).$$state.status);
+                    });
                     
 };
 
 $scope.deletevote = function(id){
-    var ll={
+    var ll=
+    {
         "idi": id,
         "idu": $scope.userid
     };
@@ -147,7 +150,9 @@ $scope.returntomenu = function(){
     window.location="/menu";
 };
 $scope.addcomment = function(idea,com){
-    var kk = {
+
+    var kk = 
+    {
         "author": $scope.user.idusers,
         "idideas": idea,
         "text": com
