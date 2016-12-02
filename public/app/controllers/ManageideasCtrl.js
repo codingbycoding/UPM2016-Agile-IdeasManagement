@@ -33,7 +33,7 @@ $scope.showDiv=false;
                             }
                         }
                         var i;
-                        alert(JSON.stringify($scope.ideas));
+                        // alert(JSON.stringify($scope.ideas));
                     })
                     .catch(function (err) {
                         $scope.items.pop();
